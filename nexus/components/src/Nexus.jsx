@@ -44,7 +44,7 @@ const content = {
                 <h4 style={{ textAlign: "left"}}>{group.title}</h4>
 
                 <Widget
-                    src="near/widget/DIG.Tabs"
+                    src="${REPL_ACCOUNT}/widget/DIG.Tabs"
                     props={{
                         variant: "line",
                         size: "large",
@@ -89,7 +89,7 @@ return (
       <div className="d-flex flex-column gap-5">
         <Wrapper>
           <Widget
-              src={`near/widget/Moderation.Sidebar`}
+              src={`${REPL_ACCOUNT}/widget/Moderation.Sidebar`}
               props={{
                 title: "AGI Guild",
                 activeTab,

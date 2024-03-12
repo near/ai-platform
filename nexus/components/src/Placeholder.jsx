@@ -1,4 +1,4 @@
-const { href } = VM.require("devhub.near/widget/core.lib.url");
+const { href } = VM.require("devhub.${REPL_ACCOUNT}/widget/core.lib.url");
 if (!href) {
     return <></>;
 }
@@ -76,12 +76,12 @@ const renderItem = (item, editFunction) => {
             <div className="col-2">
                 <Actions>
                     <Widget
-                        src="near/widget/DIG.Tooltip"
+                        src="${REPL_ACCOUNT}/widget/DIG.Tooltip"
                         props={{
                             content: editLabel,
                             trigger: (
                                 <Widget
-                                    src="near/widget/DIG.Button"
+                                    src="${REPL_ACCOUNT}/widget/DIG.Button"
                                     props={{
                                         onClick: () => editFunction(item),
                                         iconLeft: editIcon,
@@ -94,26 +94,26 @@ const renderItem = (item, editFunction) => {
                         }}
                     />
                     <Widget
-                        src="near/widget/CopyUrlButton"
+                        src="${REPL_ACCOUNT}/widget/CopyUrlButton"
                         props={{
                             url: actionUrl,
                         }}
                     />
                     <Widget
-                        src="near/widget/ShareButton"
+                        src="${REPL_ACCOUNT}/widget/ShareButton"
                         props={{
                             postType: "Placeholder",
                             url: actionUrl,
                         }}
                     />
                     <Widget
-                        src="near/widget/DIG.Tooltip"
+                        src="${REPL_ACCOUNT}/widget/DIG.Tooltip"
                         props={{
                             content: "View Details",
                             trigger: (
                                 <Link to={detailsLink} style={{ all: "unset" }}>
                                     <Widget
-                                        src="near/widget/DIG.Button"
+                                        src="${REPL_ACCOUNT}/widget/DIG.Button"
                                         props={{
                                             iconLeft: "ph-bold ph-eye",
                                             variant: "secondary",
@@ -126,13 +126,13 @@ const renderItem = (item, editFunction) => {
                         }}
                     />
                     <Widget
-                        src="near/widget/DIG.Tooltip"
+                        src="${REPL_ACCOUNT}/widget/DIG.Tooltip"
                         props={{
                             content: "Use " + entityType,
                             trigger: (
                                 <Link to={actionLink} style={{ all: "unset" }}>
                                     <Widget
-                                        src="near/widget/DIG.Button"
+                                        src="${REPL_ACCOUNT}/widget/DIG.Button"
                                         props={{
                                             iconLeft: "ph-bold ph-chat-teardrop-text",
                                             variant: "secondary",
@@ -150,7 +150,7 @@ const renderItem = (item, editFunction) => {
     );
 };
 
-const createWidget = "near/widget/Entities.Template.EntityCreate";
+const createWidget = "${REPL_ACCOUNT}/widget/Entities.Template.EntityCreate";
 
 const loadItems = (queries, queryName, offset, collection, onLoad) => {
     console.log('loadItems');
@@ -168,7 +168,7 @@ return (
     <div>
         <h4>{title}</h4>
         <Widget
-            src="near/widget/Entities.Template.EntityList"
+            src="${REPL_ACCOUNT}/widget/Entities.Template.EntityList"
             props={{ table: true, entityType, loadItems, buildQueries, queryName, collection: 'data', renderItem, createWidget, schema }}
         />
     </div>

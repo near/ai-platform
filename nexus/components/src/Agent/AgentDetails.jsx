@@ -1,4 +1,4 @@
-const { href } = VM.require("devhub.near/widget/core.lib.url");
+const { href } = VM.require("devhub.${REPL_ACCOUNT}/widget/core.lib.url");
 const { schema } = VM.require(`${REPL_AGIGUILD}/widget/Schema.Agent`);
 if (!href || !schema ) {
     return <></>;
@@ -109,7 +109,7 @@ return (
     />
     <ContentWrapper>
       <Widget
-        src="near/widget/DIG.Tabs"
+        src="${REPL_ACCOUNT}/widget/DIG.Tabs"
         props={{
           variant: "line",
           size: "large",
@@ -124,7 +124,7 @@ return (
             {
               name: editLabel,
               value: "edit",
-              content: <Widget src={"near/widget/Entities.Template.EntityCreate"} props={{entityType, schema, data: agent, cancelLabel: 'Clear changes' }} />,
+              content: <Widget src={"${REPL_ACCOUNT}/widget/Entities.Template.EntityCreate"} props={{entityType, schema, data: agent, cancelLabel: 'Clear changes' }} />,
               icon: editIcon,
             },
             {
@@ -137,7 +137,7 @@ return (
         }}
       />
 
-      <Widget src="near/widget/ComponentDetails.Sidebar" props={{ src }} />
+      <Widget src="${REPL_ACCOUNT}/widget/ComponentDetails.Sidebar" props={{ src }} />
     </ContentWrapper>
   </Wrapper>
 );

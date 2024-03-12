@@ -43,7 +43,7 @@ const schema = {
         inputProps: {
             min: 0,
             max: 255,
-            placeholder: "The component used to run the agent, default is near/widget/Agent.AgentChat",
+            placeholder: "The component used to run the agent, default is ${REPL_ACCOUNT}/widget/Agent.AgentChat",
             required: false,
         },
         label: "Component",

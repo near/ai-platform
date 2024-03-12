@@ -1,5 +1,5 @@
 if (!props.agent) return "";
-const { href } = VM.require("devhub.near/widget/core.lib.url");
+const { href } = VM.require("devhub.${REPL_ACCOUNT}/widget/core.lib.url");
 if (!href) {
   return <></>;
 }
@@ -153,7 +153,7 @@ return (
     <Header size={size}>
       <Thumbnail size={size}>
         <Widget
-          src="mob.near/widget/Image"
+          src="mob.${REPL_ACCOUNT}/widget/Image"
           props={{
             image: { url: logoUrl },
             fallbackUrl: "https://ipfs.near.social/ipfs/bafkreibysr2mkwhb4j36h2t7mqwhynqdy4vzjfygfkfg65kuspd2bawauu",
@@ -172,7 +172,7 @@ return (
     {tags && tags.length > 0 && (
       <TagsWrapper>
         <Widget
-          src="near/widget/Tags"
+          src="${REPL_ACCOUNT}/widget/Tags"
           props={{
             tags,
           }}
@@ -184,12 +184,12 @@ return (
       <Actions>
         {false && accountId === context.accountId && (
           <Widget
-            src="near/widget/DIG.Tooltip"
+            src="${REPL_ACCOUNT}/widget/DIG.Tooltip"
             props={{
               content: "Edit",
               trigger: (
                 <Widget
-                  src="near/widget/DIG.Button"
+                  src="${REPL_ACCOUNT}/widget/DIG.Button"
                   props={{
                     label: "Delete",
                     disabled: !context.accountId || context.accountId !== accountId,
@@ -205,20 +205,20 @@ return (
           />
         )}
         <Widget
-          src="near/widget/CopyUrlButton"
+          src="${REPL_ACCOUNT}/widget/CopyUrlButton"
           props={{
             url: agentChatUrl,
           }}
         />
         <Widget
-          src="near/widget/ShareButton"
+          src="${REPL_ACCOUNT}/widget/ShareButton"
           props={{
             postType: "AI Agent",
             url: agentChatUrl,
           }}
         />
         <Widget
-          src="near/widget/SocialIndexActionButton"
+          src="${REPL_ACCOUNT}/widget/SocialIndexActionButton"
           props={{
             actionName: "star",
             actionUndoName: "unstar",
@@ -240,13 +240,13 @@ return (
           }}
         />{" "}
         <Widget
-          src="near/widget/DIG.Tooltip"
+          src="${REPL_ACCOUNT}/widget/DIG.Tooltip"
           props={{
             content: "Use agent",
             trigger: (
               <Link to={chatLink} style={{ all: "unset" }}>
                 <Widget
-                  src="near/widget/DIG.Button"
+                  src="${REPL_ACCOUNT}/widget/DIG.Button"
                   props={{
                     label: "Use Agent",
                     iconLeft: "ph-bold ph-chat-teardrop-text",
