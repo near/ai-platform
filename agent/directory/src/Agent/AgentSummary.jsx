@@ -78,8 +78,8 @@ const Thumbnail = styled.div`
   border-radius: 12px;
   overflow: hidden;
   box-shadow:
-    0px 1px 3px rgba(16, 24, 40, 0.1),
-    0px 1px 2px rgba(16, 24, 40, 0.06);
+    0 1px 3px rgba(16, 24, 40, 0.1),
+    0 1px 2px rgba(16, 24, 40, 0.06);
 
   img {
     object-fit: cover;
@@ -135,7 +135,6 @@ const Button = styled.button`
 
 const Text = styled.p`
   margin: 0;
-  font-size: 14px;
   line-height: 20px;
   color: ${(p) => (p.bold ? "#11181C" : "#687076")};
   font-weight: ${(p) => (p.bold ? "600" : "400")};
@@ -154,7 +153,7 @@ return (
     <Header size={size}>
       <Thumbnail size={size}>
         <Widget
-          src="${REPL_MOB}/widget/Image"
+          src="mob.near/widget/Image"
           props={{
             image: { url: logoUrl },
             fallbackUrl: "https://ipfs.near.social/ipfs/bafkreibysr2mkwhb4j36h2t7mqwhynqdy4vzjfygfkfg65kuspd2bawauu",
