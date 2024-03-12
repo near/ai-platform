@@ -7,10 +7,10 @@ These may be Near specific, multi-chain using Near chain abstraction, or impleme
 Projects may be spun out into their own repositories as they mature.
 
 ## Areas
- * ./agent/framework - Framework of NEAR Protocol Capabilities for use by AI Agents
- * [./agent/framework/trust](agent/framework/trust) - Trust and Integrity Framework
- * [./agent/examples](agent/examples) - Example agents that use Agent Framework capabilities
- * [./agent/directory](agent/directory) - A portal and directory that showcases Web3 AI Apps and Agents
+ * ./nexus/components - AGI Guild resource Nexus, BOS component implementation
+ * ./nexus/framework - Framework of NEAR Protocol Capabilities for use by AI Agents
+ * [./nexus/framework/trust](nexus/framework/trust) - Trust and Integrity Framework
+ * [./nexus/examples](nexus/examples) - Example agents that use Agent Framework capabilities
 
 
  * inference - Provable Decentralized Inference
