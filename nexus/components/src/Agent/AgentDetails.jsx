@@ -1,4 +1,4 @@
-const { href } = VM.require("devhub.near/widget/core.lib.url");
+const { href } = VM.require("${REPL_DEVHUB}/widget/core.lib.url");
 const { schema } = VM.require(`${REPL_AGIGUILD}/widget/Schema.Agent`);
 if (!href || !schema ) {
     return <></>;
