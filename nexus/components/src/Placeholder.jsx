@@ -153,7 +153,6 @@ const renderItem = (item, editFunction) => {
 const createWidget = "${REPL_ACCOUNT}/widget/Entities.Template.EntityCreate";
 
 const loadItems = (queries, queryName, offset, collection, onLoad) => {
-    console.log('loadItems');
     const placeholderData = { data: [
         {name: 'test1', displayName: 'Alpha Alpaca Aardvark Alumnus', accountId: 'agiguild.near', logoUrl: 'https://ipfs.near.social/ipfs/bafkreibysr2mkwhb4j36h2t7mqwhynqdy4vzjfygfkfg65kuspd2bawauu'},
         {name: 'test2', displayName: 'Beta Barracuda Baleen Boilermaker', accountId: 'agiguild.near', logoUrl: 'https://ipfs.near.social/ipfs/bafkreibysr2mkwhb4j36h2t7mqwhynqdy4vzjfygfkfg65kuspd2bawauu'},
