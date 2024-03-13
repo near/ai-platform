@@ -1,4 +1,4 @@
-const { href } = VM.require("devhub.${REPL_ACCOUNT}/widget/core.lib.url");
+const { href } = VM.require("devhub.near/widget/core.lib.url");
 const storedModel = Storage.get("agent-model");
 const storedLocalModel = Storage.get("agent-local-model");
 const storedCredentialType = Storage.get("agent-credential-type");

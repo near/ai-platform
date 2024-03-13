@@ -1,5 +1,5 @@
 if (!props.agent) return "";
-const { href } = VM.require("devhub.${REPL_ACCOUNT}/widget/core.lib.url");
+const { href } = VM.require("devhub.near/widget/core.lib.url");
 if (!href) {
   return <></>;
 }
