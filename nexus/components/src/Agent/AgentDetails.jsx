@@ -94,7 +94,7 @@ const customComponentLabel = (component) => {
     if (component === `agiguild.near/widget/Agent.AgentChat`) {
         return "Chat";
     }
-    return <Widget src="near/widget/DIG.Tooltip" props={{ content: <p>{component}</p>, trigger: "Chat (Custom component)"}} />;
+    return <Widget src="${REPL_ACCOUNT}/widget/DIG.Tooltip" props={{ content: <p>{component}</p>, trigger: "Chat (Custom component)"}} />;
 }
 
 return (

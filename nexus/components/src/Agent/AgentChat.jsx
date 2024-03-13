@@ -454,7 +454,7 @@ return (
             <div key={i} className={`message ${role}`}>
               {role === "user" && (
                 <UserMessage>
-                  <Widget src="mob.${REPL_ACCOUNT}/widget/N.ProfileLine" props={{ accountId: context.accountId }} />
+                  <Widget src="${REPL_MOB}/widget/N.ProfileLine" props={{ accountId: context.accountId }} />
                   <Markdown text={content} />
                 </UserMessage>
               )}
