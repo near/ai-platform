@@ -1,4 +1,4 @@
-const { href } = VM.require("devhub.near/widget/core.lib.url");
+const { href } = VM.require("devhub.${REPL_ACCOUNT}/widget/core.lib.url");
 
 if (!href) {
   return <></>;
@@ -91,7 +91,7 @@ const AgentCard = ({ item, editFunction }) => {
             <h3>{displayName}</h3>
             <p>by {accountId}</p>
             <Widget
-              src="near/widget/DIG.Tooltip"
+              src="${REPL_ACCOUNT}/widget/DIG.Tooltip"
               props={{
                 content: <PromptTooltip>{prompt}</PromptTooltip>,
                 trigger: <Prompt>{prompt ? prompt.substring(0, 50) : ""}...</Prompt>,
@@ -102,12 +102,12 @@ const AgentCard = ({ item, editFunction }) => {
       </Link>
       <Actions>
         <Widget
-          src="near/widget/DIG.Tooltip"
+          src="${REPL_ACCOUNT}/widget/DIG.Tooltip"
           props={{
             content: editLabel,
             trigger: (
               <Widget
-                src="near/widget/DIG.Button"
+                src="${REPL_ACCOUNT}/widget/DIG.Button"
                 props={{
                   onClick: () => editFunction(item),
                   iconLeft: editIcon,
@@ -120,26 +120,26 @@ const AgentCard = ({ item, editFunction }) => {
           }}
         />
         <Widget
-          src="near/widget/CopyUrlButton"
+          src="${REPL_ACCOUNT}/widget/CopyUrlButton"
           props={{
             url: actionUrl,
           }}
         />
         <Widget
-          src="near/widget/ShareButton"
+          src="${REPL_ACCOUNT}/widget/ShareButton"
           props={{
             postType: "AI Agent",
             url: actionUrl,
           }}
         />
         <Widget
-          src="near/widget/DIG.Tooltip"
+          src="${REPL_ACCOUNT}/widget/DIG.Tooltip"
           props={{
             content: "View Details",
             trigger: (
               <Link to={detailsLink} style={{ all: "unset" }}>
                 <Widget
-                  src="near/widget/DIG.Button"
+                  src="${REPL_ACCOUNT}/widget/DIG.Button"
                   props={{
                     iconLeft: "ph-bold ph-eye",
                     variant: "secondary",
@@ -152,13 +152,13 @@ const AgentCard = ({ item, editFunction }) => {
           }}
         />
         <Widget
-          src="near/widget/DIG.Tooltip"
+          src="${REPL_ACCOUNT}/widget/DIG.Tooltip"
           props={{
             content: "Use agent",
             trigger: (
               <Link to={actionLink} style={{ all: "unset" }}>
                 <Widget
-                  src="near/widget/DIG.Button"
+                  src="${REPL_ACCOUNT}/widget/DIG.Button"
                   props={{
                     iconLeft: "ph-bold ph-chat-teardrop-text",
                     variant: "secondary",

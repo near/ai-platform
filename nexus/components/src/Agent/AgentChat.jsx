@@ -1,4 +1,4 @@
-const { href } = VM.require("devhub.near/widget/core.lib.url");
+const { href } = VM.require("devhub.${REPL_ACCOUNT}/widget/core.lib.url");
 const storedModel = Storage.get("agent-model");
 const storedLocalModel = Storage.get("agent-local-model");
 const storedCredentialType = Storage.get("agent-credential-type");
@@ -246,7 +246,7 @@ const renderSettings = () => {
         <AllSettings>
           <InputWrapper>
             <Widget
-              src="near/widget/DIG.InputSelect"
+              src="${REPL_ACCOUNT}/widget/DIG.InputSelect"
               props={{
                 groups: [
                   {
@@ -307,7 +307,7 @@ const renderSettings = () => {
           {model === "local" && (
             <InputWrapper>
               <Widget
-                src="near/widget/DIG.Input"
+                src="${REPL_ACCOUNT}/widget/DIG.Input"
                 props={{
                   label: "Local Model URL",
                   assistiveText: "Any url that accepts messages in OpenAI format",
@@ -322,7 +322,7 @@ const renderSettings = () => {
             <div className="row">
               <div className="col-3">
                 <Widget
-                  src="near/widget/DIG.InputSelect"
+                  src="${REPL_ACCOUNT}/widget/DIG.InputSelect"
                   props={{
                     groups: [
                       {
@@ -345,7 +345,7 @@ const renderSettings = () => {
               </div>
               <div className="col">
                 <Widget
-                  src="near/widget/DIG.Input"
+                  src="${REPL_ACCOUNT}/widget/DIG.Input"
                   props={{
                     label: "Credentials",
                     assistiveText: "Your OpenAI API Key or other credentials, will be stored in your browser.",
@@ -360,7 +360,7 @@ const renderSettings = () => {
           </InputWrapper>
           <InputWrapper>
             <Widget
-              src="near/widget/DIG.Checkbox"
+              src="${REPL_ACCOUNT}/widget/DIG.Checkbox"
               props={{
                 id: "json-output",
                 label: "JSON Output mode",
@@ -431,7 +431,7 @@ return (
             autoFocus
           />
           <Widget
-            src="near/widget/DIG.Button"
+            src="${REPL_ACCOUNT}/widget/DIG.Button"
             props={{
               onClick: submitQuestion,
               iconLeft: editIcon,
@@ -454,7 +454,7 @@ return (
             <div key={i} className={`message ${role}`}>
               {role === "user" && (
                 <UserMessage>
-                  <Widget src="mob.near/widget/N.ProfileLine" props={{ accountId: context.accountId }} />
+                  <Widget src="mob.${REPL_ACCOUNT}/widget/N.ProfileLine" props={{ accountId: context.accountId }} />
                   <Markdown text={content} />
                 </UserMessage>
               )}

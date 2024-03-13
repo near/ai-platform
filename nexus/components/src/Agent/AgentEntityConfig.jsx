@@ -71,12 +71,12 @@ const renderItem = (item, editFunction) => {
   );
 };
 
-const createWidget = "near/widget/Entities.Template.EntityCreate";
+const createWidget = "${REPL_ACCOUNT}/widget/Entities.Template.EntityCreate";
 
 return (
   <div>
     <Widget
-      src="near/widget/Entities.Template.EntityList"
+      src="${REPL_ACCOUNT}/widget/Entities.Template.EntityList"
       props={{ entityType, buildQueries, queryName, collection, renderItem, createWidget, schema }}
     />
   </div>
