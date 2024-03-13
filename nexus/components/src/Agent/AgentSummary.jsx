@@ -1,5 +1,5 @@
 if (!props.agent) return "";
-const { href } = VM.require("devhub.${REPL_ACCOUNT}/widget/core.lib.url");
+const { href } = VM.require("${REPL_DEVHUB}/widget/core.lib.url");
 if (!href) {
   return <></>;
 }
@@ -153,7 +153,7 @@ return (
     <Header size={size}>
       <Thumbnail size={size}>
         <Widget
-          src="mob.${REPL_ACCOUNT}/widget/Image"
+          src="${REPL_MOB}/widget/Image"
           props={{
             image: { url: logoUrl },
             fallbackUrl: "https://ipfs.near.social/ipfs/bafkreibysr2mkwhb4j36h2t7mqwhynqdy4vzjfygfkfg65kuspd2bawauu",

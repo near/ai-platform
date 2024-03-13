@@ -1,4 +1,4 @@
-const { href } = VM.require("devhub.${REPL_ACCOUNT}/widget/core.lib.url");
+const { href } = VM.require("${REPL_DEVHUB}/widget/core.lib.url");
 if (!href) {
     return <></>;
 }

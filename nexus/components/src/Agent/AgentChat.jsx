@@ -1,4 +1,4 @@
-const { href } = VM.require("devhub.${REPL_ACCOUNT}/widget/core.lib.url");
+const { href } = VM.require("${REPL_DEVHUB}/widget/core.lib.url");
 const storedModel = Storage.get("agent-model");
 const storedLocalModel = Storage.get("agent-local-model");
 const storedCredentialType = Storage.get("agent-credential-type");
@@ -454,7 +454,7 @@ return (
             <div key={i} className={`message ${role}`}>
               {role === "user" && (
                 <UserMessage>
-                  <Widget src="mob.${REPL_ACCOUNT}/widget/N.ProfileLine" props={{ accountId: context.accountId }} />
+                  <Widget src="${REPL_MOB}/widget/N.ProfileLine" props={{ accountId: context.accountId }} />
                   <Markdown text={content} />
                 </UserMessage>
               )}
