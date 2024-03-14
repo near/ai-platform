@@ -19,7 +19,7 @@ const schema = {
     datasets: {
         title: "Datasets",
         icon: "ph ph-list-checks",
-        defaultValue: "providers",
+        defaultValue: "alignment",
         items: [
             {
                 name: "Foundation",
@@ -36,7 +36,7 @@ const schema = {
             {
                 name: "Alignment",
                 value: "alignment",
-                content: <Widget src="${REPL_AGIGUILD}/widget/Placeholder" props={{entityType: 'alignmentDataset', title: 'Alignment Datasets: RHLF, DPO'}}/>,
+                content: <Widget src="${REPL_AGIGUILD}/widget/Placeholder" props={{entityType: 'alignmentDataset', title: 'Alignment Datasets: RLHF, DPO'}}/>,
                 icon: "ph ph-chart-bar-horizontal",
             },
         ],
@@ -80,7 +80,7 @@ const schema = {
             {
                 name: "User Interfaces",
                 value: "uis",
-                content: <Widget src="${REPL_AGIGUILD}/widget/Placeholder" props={{entityType: 'customUI', title: 'Custom UIs'}}/>,
+                content: <Widget src="${REPL_AGIGUILD}/widget/Placeholder" props={{entityType: 'customUI', title: 'Custom User Interfaces'}}/>,
                 icon: "ph ph-chart-bar-horizontal",
             },
         ],
