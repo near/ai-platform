@@ -8,6 +8,7 @@ const schema = {
         displayType: "hidden",
     },
     name: {
+        type: "string",
         inputProps: {
             min: 2,
             max: 80,
@@ -50,11 +51,13 @@ const schema = {
         order: 4,
     },
     logoUrl: {
+        type: "string",
         inputProps: {
             min: 4,
             max: 255,
             placeholder: "The logo URL for the agent.",
             required: false,
+            validUrl: true,
         },
 
         label: "Logo URL",
