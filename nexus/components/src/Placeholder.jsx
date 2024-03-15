@@ -3,12 +3,13 @@ if (!href) {
     return <></>;
 }
 
-const { entityType, title } = props;
+const { namespace, entityType, title } = props;
 
-const { schema } = VM.require(`${REPL_AGIGUILD}/widget/Schema.Generic`);
-if (!schema ) {
+const { genSchema } = VM.require(`${REPL_ACCOUNT}/widget/Entities.Template.GenericSchema`, { namespace, entityType });
+if (!genSchema ) {
     return <></>;
 }
+const schema = genSchema(namespace, entityType);
 
 const Row = styled.div`
     vertical-align: middle;
@@ -25,23 +26,6 @@ const Row = styled.div`
   align-items: center;
   gap: 2px;
 `;
-
-const convertSnakeToPascal = (item) => {
-    const newItems = {};
-    Object.keys(item).forEach((key) => {
-        const pascalKey = key.replace(/(_\w)/g, (m) => m[1].toUpperCase());
-        newItems[pascalKey] = item[key];
-    });
-    return newItems;
-};
-const convertPascalToSnake = (item) => {
-    const newItems = {};
-    Object.keys(item).forEach((key) => {
-        const snakeKey = key.replace(/([A-Z])/g, (m) => "_" + m.toLowerCase());
-        newItems[snakeKey] = item[key];
-    });
-    return newItems;
-}
 
 const renderItem = (item, editFunction) => {
     const { accountId, name, displayName, logoUrl } = item;
