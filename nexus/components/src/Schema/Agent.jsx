@@ -1,10 +1,13 @@
 const schema = {
+    namespace: "agiguild",
+    entityType: "agent",
+    entityTitle: "Agent",
     id: {
         type: "integer",
         displayType: "hidden",
     },
     accountId: {
-        type: "text",
+        type: "string",
         displayType: "hidden",
     },
     name: {
@@ -20,6 +23,7 @@ const schema = {
         order: 1,
     },
     displayName: {
+        type: "string",
         inputProps: {
             min: 2,
             max: 255,
@@ -30,6 +34,7 @@ const schema = {
         order: 2,
     },
     prompt: {
+        type: "string",
         inputProps: {
             min: 2,
             max: 8192,
@@ -41,6 +46,7 @@ const schema = {
         order: 3,
     },
     component: {
+        type: "string",
         inputProps: {
             min: 0,
             max: 255,
