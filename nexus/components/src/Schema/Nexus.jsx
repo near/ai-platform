@@ -24,19 +24,20 @@ const schema = {
             {
                 name: "Foundation",
                 value: "foundation",
-                content: <Widget src="${REPL_AGIGUILD}/widget/Placeholder" props={{entityType: 'foundationDataset', title: 'Foundation Datasets'}}/>,
+                content: <Widget src="${REPL_ACCOUNT}/widget/Entities.Template.GenericEntityConfig" props={{namespace: 'agiguild', entityType: 'foundationDataset', title: 'Foundation Datasets'}}/>,
                 icon: "ph ph-chart-bar-horizontal",
             },
             {
                 name: "Supervised Fine Tuning",
                 value: "fineTuning",
-                content: <Widget src="${REPL_AGIGUILD}/widget/Placeholder" props={{entityType: 'fineTuningDataset', title: 'Supervised Fine Tuning Datasets'}}/>,
+                content: <Widget src="${REPL_ACCOUNT}/widget/Entities.Template.GenericEntityConfig" props={{namespace: 'agiguild', entityType: 'fineTuningDataset', title: 'Supervised Fine Tuning Datasets'}}/>,
                 icon: "ph ph-chart-bar-horizontal",
             },
             {
                 name: "Alignment",
                 value: "alignment",
-                content: <Widget src="${REPL_AGIGUILD}/widget/Placeholder" props={{entityType: 'alignmentDataset', title: 'Alignment Datasets: RLHF, DPO'}}/>,
+                content: <Widget src="${REPL_ACCOUNT}/widget/Entities.Template.GenericEntityConfig"
+                                 props={{namespace: 'agiguild', entityType: 'alignmentDataset', title: 'Alignment Datasets: RLHF, DPO', schemaFile: "${REPL_AGIGUILD}/widget/Schema.AlignmentDataset"}}/>,
                 icon: "ph ph-chart-bar-horizontal",
             },
         ],
@@ -49,13 +50,13 @@ const schema = {
             {
                 name: "Providers",
                 value: "providers",
-                content: <Widget src="${REPL_AGIGUILD}/widget/Placeholder" props={{entityType: 'modelProvider', title: 'Model Providers'}}/>,
+                content: <Widget src="${REPL_ACCOUNT}/widget/Entities.Template.GenericEntityConfig" props={{namespace: 'agiguild', entityType: 'modelProvider', title: 'Model Providers'}}/>,
                 icon: "ph ph-chart-bar-horizontal",
             },
             {
                 name: "Models",
                 value: "models",
-                content: <Widget src="${REPL_AGIGUILD}/widget/Placeholder" props={{entityType: 'model', title: 'Models'}}/>,
+                content: <Widget src="${REPL_ACCOUNT}/widget/Entities.Template.GenericEntityConfig" props={{namespace: 'agiguild', entityType: 'model', title: 'Models'}}/>,
                 icon: "ph ph-chart-bar-horizontal",
             },
         ],
@@ -74,13 +75,13 @@ const schema = {
             {
                 name: "Frameworks",
                 value: "frameworks",
-                content: <Widget src="${REPL_AGIGUILD}/widget/Placeholder" props={{entityType: 'agentFramework', title: 'Agent Frameworks'}}/>,
+                content: <Widget src="${REPL_ACCOUNT}/widget/Entities.Template.GenericEntityConfig" props={{namespace: 'agiguild', entityType: 'agentFramework', title: 'Agent Frameworks'}}/>,
                 icon: "ph ph-chart-bar-horizontal",
             },
             {
                 name: "User Interfaces",
                 value: "uis",
-                content: <Widget src="${REPL_AGIGUILD}/widget/Placeholder" props={{entityType: 'customUI', title: 'Custom User Interfaces'}}/>,
+                content: <Widget src="${REPL_ACCOUNT}/widget/Entities.Template.GenericEntityConfig" props={{namespace: 'agiguild', entityType: 'customUI', title: 'Custom User Interfaces'}}/>,
                 icon: "ph ph-chart-bar-horizontal",
             },
         ],

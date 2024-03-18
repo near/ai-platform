@@ -431,7 +431,6 @@ src = src.replace("COLOR_PROPERTY", colorToVec3(color, alpha));
 return (
   <div className="iframeContainer container">
     <iframe
-      onLoad={() => console.log("iframe loaded")}
       className="w-100"
       style={{ height: "8vh", overflow: "hidden" }}
       srcDoc={src}

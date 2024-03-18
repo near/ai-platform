@@ -1,4 +1,4 @@
-const entityType = "Agent";
+const entityType = "agent";
 const entityIndexer = "agents";
 const entityTable = "agents";
 
@@ -9,7 +9,7 @@ const { schema } = VM.require(`${REPL_AGIGUILD}/widget/Schema.Agent`);
 if (!schema ) {
   return <></>;
 }
-
+const dataFields = Object.keys(schema).filter((key) => typeof schema[key] === "object");
 const buildQueries = (searchKey, sort) => {
   const queryFilter = searchKey ? `name: {_ilike: "%${searchKey}%"}` : "";
   let querySortOption;
@@ -30,7 +30,7 @@ query ListQuery($offset: Int, $limit: Int) {
       where: {${queryFilter}}
       order_by: [${querySortOption} ], 
       offset: $offset, limit: $limit) {
-      ${Object.keys(convertPascalToSnake(schema)).join("\n")}
+      ${convertPascalToSnake(dataFields).join("\n")}
   }
   ${collection}_aggregate {
     aggregate {
@@ -50,11 +50,11 @@ const convertSnakeToPascal = (item) => {
   });
   return newItems;
 };
-const convertPascalToSnake = (item) => {
-    const newItems = {};
-    Object.keys(item).forEach((key) => {
+const convertPascalToSnake = (itemArray) => {
+    const newItems = [];
+    itemArray.forEach((key) => {
         const snakeKey = key.replace(/([A-Z])/g, (m) => "_" + m.toLowerCase());
-        newItems[snakeKey] = item[key];
+        newItems.unshift(snakeKey);
     });
     return newItems;
 }

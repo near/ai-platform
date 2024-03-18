@@ -63,8 +63,8 @@ const Actions = styled.div`
 const AgentCard = ({ item, editFunction }) => {
   const { accountId, name, displayName, prompt, logoUrl } = item;
   const agentComponent = item.component ? item.component : `${REPL_AGIGUILD}/widget/Agent.AgentChat`;
-  const imageUrl =
-    logoUrl ?? "https://ipfs.near.social/ipfs/bafkreibysr2mkwhb4j36h2t7mqwhynqdy4vzjfygfkfg65kuspd2bawauu";
+  const imageUrl = logoUrl ?
+          logoUrl : "https://ipfs.near.social/ipfs/bafkreibysr2mkwhb4j36h2t7mqwhynqdy4vzjfygfkfg65kuspd2bawauu";
   const actionLink = href({
     widgetSrc: agentComponent,
     params: { src: `${accountId}/agent/${name}` },

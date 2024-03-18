@@ -1,11 +1,10 @@
 
-const humanize = (str) => {
-    if (!str) return "";
-    return str.replace(/([A-Z])/g, " $1").replace(/^./, (s) => s.toUpperCase());
-};
 
-const genSchema = (namespace, entityType, entityTitle) => {
-    const title = entityTitle || humanize(entityType);
+const genSchema = () => {
+    const namespace = 'agiguild';
+    const entityType = 'alignmentDataset';
+    const entityTitle = 'Alignment Dataset';
+    const title = entityTitle;
     return {
     namespace: namespace,
     entityType: entityType,
@@ -52,6 +51,17 @@ const genSchema = (namespace, entityType, entityTitle) => {
 
         label: "Logo URL",
         order: 5,
+    },
+    languages: {
+        type: "string",
+        inputProps: {
+            min: 0,
+            max: 1024,
+            placeholder: `Languages in the dataset.`,
+            required: false,
+        },
+        label: "Languages",
+        order: 6,
     },
 }
 };
