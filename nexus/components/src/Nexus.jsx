@@ -114,21 +114,21 @@ const sidebarItems = (schema) => {
 }
 
 return (
-    <>
-      <div className="d-flex flex-column gap-5">
-        <Wrapper>
-          <Widget
-              src={`${REPL_ACCOUNT}/widget/Moderation.Sidebar`}
-              props={{
-                title: "AGI Guild",
-                activeTab: activeGroup,
-                items: sidebarItems(schema),
-              }}
-          />
-          {renderContent()}
-        </Wrapper>
-      </div>
-    </>
+    <div className="gateway-page-container">
+        <div className="d-flex flex-column gap-5">
+            <Wrapper>
+                <Widget
+                    src={`${REPL_ACCOUNT}/widget/Moderation.Sidebar`}
+                    props={{
+                        title: "AGI Guild",
+                        activeTab: activeGroup,
+                        items: sidebarItems(schema),
+                    }}
+                />
+                {renderContent()}
+            </Wrapper>
+        </div>
+    </div>
 );
 
 
