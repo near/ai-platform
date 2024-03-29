@@ -1,47 +1,3 @@
-const entityType = "agent";
-const entityIndexer = "agents";
-const entityTable = "agents";
-
-const user = "dataplatform_near";
-const collection = `${user}_${entityIndexer}_${entityTable}`;
-
-const { schema } = VM.require(`${REPL_AGIGUILD}/widget/Schema.Agent`);
-if (!schema ) {
-  return <></>;
-}
-const dataFields = Object.keys(schema).filter((key) => typeof schema[key] === "object");
-const buildQueries = (searchKey, sort) => {
-  const queryFilter = searchKey ? `name: {_ilike: "%${searchKey}%"}` : "";
-  let querySortOption;
-  switch (sort) {
-    case "z-a":
-      querySortOption = `{ name: desc },`;
-      break;
-    case "a-z":
-      querySortOption = `{ name: asc },`;
-      break;
-    default:
-      querySortOption = "{ id: desc },";
-  }
-
-  return `
-query ListQuery($offset: Int, $limit: Int) {
-  ${collection}(
-      where: {${queryFilter}}
-      order_by: [${querySortOption} ], 
-      offset: $offset, limit: $limit) {
-      ${convertPascalToSnake(dataFields).join("\n")}
-  }
-  ${collection}_aggregate {
-    aggregate {
-      count
-    }
-  }
-}
-`;
-};
-const queryName = "ListQuery";
-
 const convertSnakeToPascal = (item) => {
     const newItems = {};
     Object.keys(item).forEach((key) => {
@@ -50,34 +6,23 @@ const convertSnakeToPascal = (item) => {
   });
   return newItems;
 };
-const convertPascalToSnake = (itemArray) => {
-    const newItems = [];
-    itemArray.forEach((key) => {
-        const snakeKey = key.replace(/([A-Z])/g, (m) => "_" + m.toLowerCase());
-        newItems.unshift(snakeKey);
-    });
-    return newItems;
-}
-
 const renderItem = (item, editFunction) => {
+  const flatItem = {...item, ...item.attributes};
+  delete flatItem.attributes;
   return (
     <Widget
       src="${REPL_AGIGUILD}/widget/Agent.AgentCard"
       props={{
-        item: convertSnakeToPascal(item),
+        item: convertSnakeToPascal(flatItem),
         editFunction,
       }}
     />
   );
 };
-
-const createWidget = "${REPL_ACCOUNT}/widget/Entities.Template.EntityCreate";
-
 return (
-  <div>
-    <Widget
-      src="${REPL_ACCOUNT}/widget/Entities.Template.EntityList"
-      props={{ entityType, buildQueries, queryName, collection, renderItem, createWidget, schema }}
-    />
-  </div>
-);
+        <Widget src="${REPL_ACCOUNT}/widget/Entities.Template.GenericEntityConfig"
+                props={{namespace: 'agiguild', entityType: 'agent', title: 'Agent',
+                    schemaFile: "${REPL_AGIGUILD}/widget/Schema.Agent",
+                    renderItem,
+        }}/>
+)
