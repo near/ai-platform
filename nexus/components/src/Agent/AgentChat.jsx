@@ -133,10 +133,7 @@ const openAICompatible = async (question) => {
       ...options,
       messages: [
         { role: "system", content: data.prompt },
-        {
-          role: "user",
-          content: finalQuestion,
-        },
+          ...messages,
       ],
     }),
   }).then((response) => {
@@ -152,7 +149,7 @@ useEffect(() => {
   setLoading(true);
   routeApi(...messages.slice(-1))
     .then((answer) => {
-      setMessages([...messages, { role: "system", content: answer }]);
+      setMessages([...messages, { role: "assistant", content: answer }]);
     })
     .finally(() => {
       setLoading(false);
