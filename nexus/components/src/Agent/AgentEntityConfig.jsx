@@ -15,6 +15,9 @@ const renderItem = (item, editFunction) => {
       props={{
         item: convertSnakeToPascal(flatItem),
         editFunction,
+        namespace: 'agiguild',
+        entityType: 'agent',
+        schemaFile: "${REPL_AGIGUILD}/widget/Schema.Agent",
       }}
     />
   );

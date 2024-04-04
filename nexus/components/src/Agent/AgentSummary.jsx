@@ -1,11 +1,11 @@
-if (!props.agent) return "";
+if (!props.entity) return "";
 const { href } = VM.require("${REPL_DEVHUB}/widget/core.lib.url");
 if (!href) {
   return <></>;
 }
 
-const { agent, showActions } = props;
-const { accountId, name, displayName, prompt, logoUrl, tags, component } = agent;
+const { entity, showActions } = props;
+const { accountId, name, displayName, prompt, logoUrl, tags, component } = entity;
 
 const agentComponent = item.component ? item.component : `${REPL_AGIGUILD}/widget/Agent.AgentChat`;
 const chatLink = href({

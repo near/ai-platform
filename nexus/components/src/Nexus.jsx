@@ -49,7 +49,7 @@ const content = {
     overview: () => {
         return (
             <div>
-                <Widget src="${REPL_AGIGUILD}/widget/Agent.AgentHeader" props={{text: "AGI Guild", color: "#11181c"}}/>
+                <Widget src="${REPL_AGIGUILD}/widget/HeaderText" props={{text: "AGI Guild", color: "#11181c"}}/>
                 <Instructions>
                     <p>Welcome to the AGI Guild</p>
 
@@ -58,6 +58,7 @@ const content = {
                             <Link href={'https://github.com/agiguild/agiguild/blob/master/README.md'} target="_blank">https://github.com/agiguild/agiguild/</Link>
                         </p>
                     </div>
+                    <Widget src="${REPL_AGIGUILD}/widget/Overview" props={{}}/>
                 </Instructions>
             </div>
         );
@@ -83,13 +84,33 @@ const content = {
                 />
             </div>
         );
-    }
+    },
+    dashboard: () => {
+        return (
+            <div>
+                <Instructions>
+                    <p>This is your personal Dashboard</p>
+
+                    <div style={{paddingLeft: "2em"}}>
+                        <p>
+                            Usage of Agents, Datasets, etc that you have contributed.
+                        </p>
+                        <p>
+                            Your favorite Agents.
+                        </p>
+                    </div>
+                </Instructions>
+            </div>
+        );
+    },
 }
 
 const renderContent = () => {
-  switch (activeGroup) {
-    case "overview":
+    switch (activeGroup) {
+        case "overview":
       return content.overview();
+        case "dashboard":
+    return content.dashboard();
   default:
       return content.subGroups(activeGroup, schema[activeGroup]);
   }
