@@ -6,7 +6,7 @@
 //   Model providers, including Provable Inference
 //   Agent frameworks: mintbase, LangChain
 //   Custom UIs on BOS
-//   Triggers: time, on-chain event based
+//   Modules: Incentive frameworks, Triggers: time, on-chain event based
 //   Reputation: of data, models, agents
 //   Github repos
 //   Papers
@@ -22,6 +22,20 @@ const schema = {
         icon: "ph ph-list-checks",
         defaultValue: "alignment",
         items: [
+            {
+                name: "Crowdsourcing",
+                value: "crowdsourcing",
+                content: <Widget src="${REPL_ACCOUNT}/widget/Entities.Template.GenericEntityConfig"
+                                 props={{namespace: 'agiguild', entityType: 'crowdsourcedDataset'}}/>,
+                icon: "ph ph-chart-bar-horizontal",
+            },
+            {
+                name: "Data marketplace",
+                value: "dataMarketplace",
+                content: <Widget src="${REPL_ACCOUNT}/widget/Entities.Template.GenericEntityConfig"
+                                 props={{namespace: 'agiguild', entityType: 'dataMarketplace'}}/>,
+                icon: "ph ph-chart-bar-horizontal",
+            },
             {
                 name: "Foundation",
                 value: "foundation",
@@ -46,13 +60,6 @@ const schema = {
                                      schemaFile: "${REPL_AGIGUILD}/widget/Schema.AlignmentDataset"}}/>,
                 icon: "ph ph-chart-bar-horizontal",
             },
-            {
-                name: "Model Weights",
-                value: "models",
-                content: <Widget src="${REPL_ACCOUNT}/widget/Entities.Template.GenericEntityConfig"
-                                 props={{namespace: 'agiguild', entityType: 'model', title: 'Model Weights'}}/>,
-                icon: "ph ph-chart-bar-horizontal",
-            },
         ],
     },
     models: {
@@ -64,7 +71,8 @@ const schema = {
                 name: "Providers",
                 value: "providers",
                 content: <Widget src="${REPL_ACCOUNT}/widget/Entities.Template.GenericEntityConfig"
-                                 props={{namespace: 'agiguild', entityType: 'modelProvider'}}/>,
+                                 props={{namespace: 'agiguild', entityType: 'modelProvider',
+                                     schemaFile: "${REPL_AGIGUILD}/widget/Schema.Provider"}}/>,
                 icon: "ph ph-chart-bar-horizontal",
             },
             {
@@ -73,6 +81,13 @@ const schema = {
                 content: <Widget src="${REPL_ACCOUNT}/widget/Entities.Template.GenericEntityConfig"
                                  props={{namespace: 'agiguild', entityType: 'modelName', title: 'Standard Model Names',
                                      schemaFile: "${REPL_AGIGUILD}/widget/Schema.ModelName"}}/>,
+                icon: "ph ph-chart-bar-horizontal",
+            },
+            {
+                name: "Model Weights",
+                value: "models",
+                content: <Widget src="${REPL_ACCOUNT}/widget/Entities.Template.GenericEntityConfig"
+                                 props={{namespace: 'agiguild', entityType: 'model', title: 'Model Weights'}}/>,
                 icon: "ph ph-chart-bar-horizontal",
             },
         ],
@@ -194,6 +209,7 @@ const schema = {
         title: "Dashboard",
         icon: "ph ph-gauge",
     },
+
 
 }
 return {schema};
