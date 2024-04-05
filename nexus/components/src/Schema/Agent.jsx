@@ -1,39 +1,14 @@
-const genSchema = (namespace, entityType, entityTitle) => {
+const {genSchema: genericGenSchema} = VM.require("${REPL_ACCOUNT}/widget/Entities.Template.GenericSchema");
+
+
+const genSchema = (ignored) => {
+    const namespace = "agiguild";
+    const entityType = "agent";
+    const entityTitle = "Agent";
+
+    const genericSchema = genericGenSchema(namespace, entityType, entityTitle);
     return {
-        namespace: "agiguild",
-        entityType: "agent",
-        entityTitle: "Agent",
-        id: {
-            type: "integer",
-            displayType: "hidden",
-        },
-        accountId: {
-            type: "string",
-            displayType: "hidden",
-        },
-        name: {
-            type: "string",
-            inputProps: {
-                min: 2,
-                max: 80,
-                allowCommaAndSpace: false,
-                placeholder: "Choose a unique identifier for your agent. Example: travel-agent.",
-                required: true,
-            },
-            label: "Name",
-            order: 1,
-        },
-        displayName: {
-            type: "string",
-            inputProps: {
-                min: 2,
-                max: 255,
-                placeholder: "The name that will be displayed to users.",
-                required: true,
-            },
-            label: "Display Name",
-            order: 2,
-        },
+        ...genericSchema,
         prompt: {
             type: "string",
             inputProps: {
@@ -56,19 +31,6 @@ const genSchema = (namespace, entityType, entityTitle) => {
             },
             label: "Component",
             order: 4,
-        },
-        logoUrl: {
-            type: "string",
-            inputProps: {
-                min: 4,
-                max: 255,
-                placeholder: "The logo URL for the agent.",
-                required: false,
-                validUrl: true,
-            },
-
-            label: "Logo URL",
-            order: 5,
         },
         // preferredProvider: {
         //     inputProps: {

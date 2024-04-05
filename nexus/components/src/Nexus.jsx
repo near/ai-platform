@@ -1,7 +1,3 @@
-const Instructions = styled.div`
-  width: 70%;
-  color: #555;
-`;
 const Wrapper = styled.div`
   display: grid;
   gap: 40px;
@@ -49,17 +45,8 @@ const content = {
     overview: () => {
         return (
             <div>
-                <Widget src="${REPL_AGIGUILD}/widget/HeaderText" props={{text: "AGI Guild", color: "#11181c"}}/>
-                <Instructions>
-                    <p>Welcome to the AGI Guild</p>
-
-                    <div style={{paddingLeft: "2em"}}>
-                        <p>
-                            <Link href={'https://github.com/agiguild/agiguild/blob/master/README.md'} target="_blank">https://github.com/agiguild/agiguild/</Link>
-                        </p>
-                    </div>
-                    <Widget src="${REPL_AGIGUILD}/widget/Overview" props={{}}/>
-                </Instructions>
+                <Widget src="${REPL_AGIGUILD}/widget/HeaderText" props={{text: "NEAR AI", color: "#11181c"}}/>
+                <Widget src="${REPL_AGIGUILD}/widget/Overview" props={{handleMenuClick}}/>
             </div>
         );
     },
@@ -86,22 +73,7 @@ const content = {
         );
     },
     dashboard: () => {
-        return (
-            <div>
-                <Instructions>
-                    <p>This is your personal Dashboard</p>
-
-                    <div style={{paddingLeft: "2em"}}>
-                        <p>
-                            Usage of Agents, Datasets, etc that you have contributed.
-                        </p>
-                        <p>
-                            Your favorite Agents.
-                        </p>
-                    </div>
-                </Instructions>
-            </div>
-        );
+        return (<Widget src="${REPL_ACCOUNT}/widget/Dashboard" props={{}}/>);
     },
 }
 
@@ -141,7 +113,7 @@ return (
                 <Widget
                     src={`${REPL_ACCOUNT}/widget/Moderation.Sidebar`}
                     props={{
-                        title: "AGI Guild",
+                        title: "NEAR AI",
                         activeTab: activeGroup,
                         items: sidebarItems(schema),
                     }}

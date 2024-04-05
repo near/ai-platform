@@ -1,60 +1,15 @@
+const {genSchema: genericGenSchema} = VM.require("${REPL_ACCOUNT}/widget/Entities.Template.GenericSchema");
 
-const humanize = (str) => {
-    if (!str) return "";
-    return str.replace(/([A-Z])/g, " $1").replace(/^./, (s) => s.toUpperCase());
-};
+const genSchema = (ignored) => {
+    const namespace = "agiguild";
+    const entityType = "modelName";
+    const entityTitle = "Model Name";
 
-const genSchema = (namespace, entityType, entityTitle) => {
-    const title = entityTitle || humanize(entityType);
+    const genericSchema = genericGenSchema(namespace, entityType, entityTitle);
     return {
-        namespace: namespace,
-        entityType: entityType,
-        entityTitle: title,
-        id: {
-            type: "integer",
-            displayType: "hidden",
-        },
-        accountId: {
-            type: "text",
-            displayType: "hidden",
-        },
-        name: {
-            type: "string",
-            inputProps: {
-                min: 2,
-                max: 80,
-                allowCommaAndSpace: false,
-                placeholder: `Choose a unique identifier for your ${title}.`,
-                required: true,
-            },
-            label: "Name",
-            order: 1,
-        },
-        displayName: {
-            type: "string",
-            inputProps: {
-                min: 2,
-                max: 255,
-                placeholder: "The name that will be displayed to users.",
-                required: true,
-            },
-            label: "Display Name",
-            order: 2,
-        },
-        logoUrl: {
-            type: "string",
-            inputProps: {
-                min: 4,
-                max: 255,
-                placeholder: `The logo URL for the ${title}.`,
-                required: false,
-            },
-
-            label: "Logo URL",
-            order: 5,
-        },
+        ...genericSchema,
         proprietary: {
-            type: "string",
+            type: "boolean",
             inputProps: {
                 min: 4,
                 max: 255,
@@ -63,8 +18,20 @@ const genSchema = (namespace, entityType, entityTitle) => {
             },
             label: "Is proprietary",
             order: 6,
-        }
-    }
+        },
+        // we can have both!
+        //     relationships: [
+        //         {
+        //             namespace: "agiguild",
+        //             entityType: "provider",
+        //         }
+        //     ],
+        //     providers: {
+        //         type: "object",
+        //         schema: "agiguild.provider",
+        //     }
+        // }
+    };
 };
 
 return {genSchema};
