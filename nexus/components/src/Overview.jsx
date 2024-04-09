@@ -130,7 +130,7 @@ const PatternContent = styled.div`
   }
 `;
 
-const ButtonLinkWrapper = styled("Link")`
+const ButtonLinkWrapper = styled.button`
   all: unset;
 
   display: flex;
@@ -242,6 +242,8 @@ const TextLink = styled("Link")`
   letter-spacing: 0.32px;
 `;
 
+const {handleMenuClick} = props;
+
 const TRENDING_APPS_LIMIT = 6;
 const dummyData = {
   slug: "",
@@ -292,8 +294,8 @@ const RoundIcon = ({ url, ...forwardedProps }) => (
   </IconWrapper>
 );
 
-const ButtonLink = ({ href, target, icon, title, text }) => (
-  <ButtonLinkWrapper href={href} target={target} $gap="24px" $padding="24px">
+const ButtonLink = ({ value, target, icon, title, text }) => (
+  <ButtonLinkWrapper onClick={() => handleMenuClick(value)} target={target} $gap="24px" $padding="24px">
     <Icon
       className={icon}
       $size="40px"
@@ -339,10 +341,10 @@ const Card = ({ title, text, children }) => (
   </Pattern>
 );
 
-const TrendingApp = ({ href, url, name, tagline, loading }) => (
+const TrendingApp = ({ value, url, name, tagline, loading }) => (
   <ButtonLinkWrapper
-    href={href}
-    target="_blank"
+    onClick={() => handleMenuClick(value)}
+    value={value}
     $gap="12px"
     $alignItems="center"
     $noHover
@@ -381,14 +383,13 @@ return (
               </Flex>
               <Flex $direction="column" $gap="16px" $mobileGap="48px">
                 <ButtonLink
-                  href="https://app.jutsu.ai"
-                  target="_blank"
+                  value="agents"
                   icon="ph-bold ph-plus"
                   title="Find an Agent"
                   text="Put AI Agents to work for you"
                 />
                 <ButtonLink
-                  href="https://${REPL_NEAR_URL}/components"
+                  value="agents"
                   icon="ph-bold ph-git-fork"
                   title="Build an Agent"
                   text="Create an Agent or other community resources."
@@ -416,7 +417,7 @@ return (
               {topRatingApps.map((app) => (
                 <TrendingApp
                   key={app.slug}
-                  href={`https:/${REPL_NEAR_URL}/${REPL_NEARCATALOG}/widget/Index?id=${app.slug}`}
+                  value="agents"
                   url={app.profile.image.url}
                   name={app.profile.name}
                   tagline={app.profile.tagline}
@@ -431,18 +432,16 @@ return (
           >
             <Flex $direction="column" $gap="16px" $mobileGap="48px">
               <ButtonLink
-                href="https://docs.near.org"
-                target="_blank"
+                value="datasets"
                 icon="ph-bold ph-book-open-text"
                 title="Datasets"
                 text="Stored in IPFS."
               />
               <ButtonLink
-                href="https://app.jutsu.ai/learn"
-                target="_blank"
+                value="models"
                 icon="ph-bold ph-video"
-                title="Full Models"
-                text="Try Jutsu.ai tutorials to build a decentralized frontend or a basic smart contract."
+                title="Models"
+                text="Model providers, and full Model weights."
               />
             </Flex>
           </Card>
