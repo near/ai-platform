@@ -130,7 +130,7 @@ const PatternContent = styled.div`
   }
 `;
 
-const ButtonLinkWrapper = styled.button`
+const ButtonMenuWrapper = styled.button`
   all: unset;
 
   display: flex;
@@ -167,6 +167,56 @@ const ButtonLinkWrapper = styled.button`
 
     & p {
       color: ${(p) => !p.$noHover && "var(--violet12)"};
+    }
+  }
+`;
+
+const ButtonLinkWrapper = styled("Link")`
+  all: unset;
+
+  display: flex;
+  gap: ${(p) => p.$gap};
+  align-items: ${(p) => p.$alignItems};
+  padding: ${(p) => p.$padding};
+  border: 1px solid transparent;
+  border-radius: 6px;
+  transition: all 200ms;
+  pointer-events: ${(p) => p.$pointerEvents};
+
+  @media (max-width: 900px) {
+    padding: 0;
+  }
+
+  &:hover {
+    cursor: pointer;
+    text-decoration: ${(p) => (!p.$noHover ? "none" : "underline")};
+
+    @media (min-width: 901px) {
+      background: ${(p) => !p.$noHover && "var(--violet3)"};
+      border-color: ${(p) => !p.$noHover && "var(--violet6)"};
+    }
+
+    & p {
+      color: ${(p) => !p.$noHover && "var(--violet12)"};
+    }
+
+    .trending-round-icon {
+      filter: drop-shadow(0px 4px 8px rgba(0, 0, 0, 0.06)) drop-shadow(0px 0px 0px rgba(0, 0, 0, 0.06));
+    }
+  }
+
+  &:focus-within {
+    background: ${(p) => !p.$noHover && "var(--violet3)"};
+    border-color: ${(p) => !p.$noHover && "var(--violet6)"};
+    box-shadow: ${(p) => !p.$noHover && "0 0 0 4px var(--violet4)"};
+    text-decoration: ${(p) => (!p.$noHover ? "none" : "underline")};
+
+    & p {
+      color: ${(p) => !p.$noHover && "var(--violet12)"};
+    }
+
+    .trending-round-icon {
+      filter: drop-shadow(0px 4px 8px var(--violet6)) drop-shadow(0px 0px 0px var(--violet6));
     }
   }
 `;
@@ -229,7 +279,10 @@ const IconCover = styled.div`
   border-radius: inherit;
 `;
 
-
+const { href } = VM.require("${REPL_DEVHUB}/widget/core.lib.url");
+if (!href) {
+  return <p>Loading modules...</p>;
+}
 const {handleMenuClick} = props;
 
 const TRENDING_APPS_LIMIT = 6;
@@ -289,6 +342,12 @@ const onLoad = (newItems, totalItems) => {
 
 loadItemsQueryApi(buildQueries(), queryName, 0, collection, onLoad);
 
+const buildAgentUrl = (agentComponent, accountId, name) =>
+  href({
+    widgetSrc: agentComponent,
+    params: { src: `${accountId}/agent/${name}` },
+  });
+
 const Icon = ({ className, fontSize, ...forwardedProps }) => (
   <IconWrapper {...forwardedProps}>
     <i className={className} style={{ fontSize, flexShrink: 0 }} />
@@ -301,8 +360,8 @@ const RoundIcon = ({ url, ...forwardedProps }) => (
   </IconWrapper>
 );
 
-const ButtonLink = ({ value, target, icon, title, text }) => (
-  <ButtonLinkWrapper onClick={() => handleMenuClick(value)} target={target} $gap="24px" $padding="24px">
+const ButtonLink = ({ href, value, target, icon, title, text }) => (
+  <ButtonMenuWrapper onClick={() => handleMenuClick(value)} target={target} $gap="24px" $padding="24px">
     <Icon
       className={icon}
       $size="40px"
@@ -322,7 +381,7 @@ const ButtonLink = ({ value, target, icon, title, text }) => (
         {text}
       </Text>
     </Flex>
-  </ButtonLinkWrapper>
+  </ButtonMenuWrapper>
 );
 
 const Card = ({ title, text, children }) => (
@@ -348,14 +407,13 @@ const Card = ({ title, text, children }) => (
   </Pattern>
 );
 
-const TrendingApp = ({ value, url, name, tagline, loading }) => (
+const TrendingApp = ({ href, url, name, loading }) => (
   <ButtonLinkWrapper
-    onClick={() => handleMenuClick(value)}
-    value={value}
+    href={href}
+    target="_blank"
     $gap="12px"
     $alignItems="center"
     $noHover
-    title={tagline}
     aria-disabled={loading}
     $pointerEvents={loading ? "none" : "auto"}
   >
@@ -424,7 +482,7 @@ return (
               {topRatingApps.map((app) => (
                 <TrendingApp
                   key={app.name}
-                  value="agents"
+                  href={buildAgentUrl(app.attributes.component, app.account_id, app.name)}
                   url={app.logo_url}
                   name={app.display_name}
                   loading={loading}
