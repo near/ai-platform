@@ -130,7 +130,7 @@ const PatternContent = styled.div`
   }
 `;
 
-const ButtonLinkWrapper = styled("Link")`
+const ButtonLinkWrapper = styled.button`
   all: unset;
 
   display: flex;
@@ -229,56 +229,65 @@ const IconCover = styled.div`
   border-radius: inherit;
 `;
 
-const TextLink = styled("Link")`
-  all: unset;
 
-  leading-trim: both;
-  text-edge: cap;
-  font-feature-settings: "salt" on;
-  font: var(--text-base);
-  color: var(--violet8);
-  text-decoration: underline;
-  cursor: pointer;
-  letter-spacing: 0.32px;
-`;
+const {handleMenuClick} = props;
 
 const TRENDING_APPS_LIMIT = 6;
 const dummyData = {
-  slug: "",
-  profile: {
-    name: "",
-    tagline: "",
-    image: {
-      url: "",
-    },
-  },
+  name: "",
+  display_name: "",
+  component: "",
+  logo_url: "",
 };
 const prefillData = Array(TRENDING_APPS_LIMIT).fill(dummyData);
+const namespace = "agiguild";
+const entityType = "agent";
+const collection = "dataplatform_near_entities_entities";
+const buildQueries = () => {
+  return `
+query ListQuery($offset: Int, $limit: Int) {
+  ${collection}(
+      where: {namespace: {_eq: "${namespace}"}, entity_type: {_eq: "${entityType}"}}
+      order_by: [{ stars: desc }, { id: desc }], 
+      offset: $offset, limit: $limit) {
+      entity_type
+      namespace
+      id
+      account_id
+      name
+      display_name
+      logo_url
+      attributes
+      stars
+      created_at
+      updated_at
+  }
+  ${collection}_aggregate (
+      where: {namespace: {_eq: "${namespace}"}, entity_type: {_eq: "${entityType}"}}
+    ){
+    aggregate {
+      count
+    }
+  }
+}
+`;
+};
+const queryName = "ListQuery";
+const loadItemsQueryApi = VM.require("${REPL_ACCOUNT}/widget/Entities.QueryApi.Client")?.loadItems;
+if (!loadItemsQueryApi) {
+    return <p>Loading modules...</p>;
+}
 
-const nearCatalogApi = "https://nearcatalog.xyz/wp-json/nearcatalog/v1";
-const topRating = "projects-by-category?cid=trending";
 const [topRatingApps, setTopRatingApps] = useState(prefillData);
 const [loading, setLoading] = useState(true);
 
-const fetchTopRatingApps = () => {
-  asyncFetch(`${nearCatalogApi}/${topRating}`)
-    .then((res) => {
-      const data = res.body;
-      const dataList = Object.keys(data)
-        .slice(0, TRENDING_APPS_LIMIT)
-        .map((key) => data[key]);
-      setTopRatingApps(dataList);
-      setLoading(false);
-    })
-    .catch((err) => console.log("Error during fetch the list of top rating apps: ", err));
-};
+const onLoad = (newItems, totalItems) => {
+    const items = newItems ? newItems.slice(0, TRENDING_APPS_LIMIT) : [];
+    setTopRatingApps(items);
+    setLoading(false);
+}
 
-useEffect(() => {
-  fetchTopRatingApps();
-  return () => {
-    setTopRatingApps(prefillData);
-  };
-}, []);
+loadItemsQueryApi(buildQueries(), queryName, 0, collection, onLoad);
 
 const Icon = ({ className, fontSize, ...forwardedProps }) => (
   <IconWrapper {...forwardedProps}>
@@ -292,8 +301,8 @@ const RoundIcon = ({ url, ...forwardedProps }) => (
   </IconWrapper>
 );
 
-const ButtonLink = ({ href, target, icon, title, text }) => (
-  <ButtonLinkWrapper href={href} target={target} $gap="24px" $padding="24px">
+const ButtonLink = ({ value, target, icon, title, text }) => (
+  <ButtonLinkWrapper onClick={() => handleMenuClick(value)} target={target} $gap="24px" $padding="24px">
     <Icon
       className={icon}
       $size="40px"
@@ -339,10 +348,10 @@ const Card = ({ title, text, children }) => (
   </Pattern>
 );
 
-const TrendingApp = ({ href, url, name, tagline, loading }) => (
+const TrendingApp = ({ value, url, name, tagline, loading }) => (
   <ButtonLinkWrapper
-    href={href}
-    target="_blank"
+    onClick={() => handleMenuClick(value)}
+    value={value}
     $gap="12px"
     $alignItems="center"
     $noHover
@@ -381,14 +390,13 @@ return (
               </Flex>
               <Flex $direction="column" $gap="16px" $mobileGap="48px">
                 <ButtonLink
-                  href="https://app.jutsu.ai"
-                  target="_blank"
+                  value="agents"
                   icon="ph-bold ph-plus"
                   title="Find an Agent"
                   text="Put AI Agents to work for you"
                 />
                 <ButtonLink
-                  href="https://${REPL_NEAR_URL}/components"
+                  value="agents"
                   icon="ph-bold ph-git-fork"
                   title="Build an Agent"
                   text="Create an Agent or other community resources."
@@ -408,18 +416,17 @@ return (
             text={
               <>
                 Explore agents built by the
-                NEAR community. Todo.
+                NEAR community.
               </>
             }
           >
             <Grid $gap="20px" $rowGap="24px" $columns="1fr 1fr" $mobileColumns="1fr 1fr">
               {topRatingApps.map((app) => (
                 <TrendingApp
-                  key={app.slug}
-                  href={`https:/${REPL_NEAR_URL}/${REPL_NEARCATALOG}/widget/Index?id=${app.slug}`}
-                  url={app.profile.image.url}
-                  name={app.profile.name}
-                  tagline={app.profile.tagline}
+                  key={app.name}
+                  value="agents"
+                  url={app.logo_url}
+                  name={app.display_name}
                   loading={loading}
                 />
               ))}
@@ -431,18 +438,16 @@ return (
           >
             <Flex $direction="column" $gap="16px" $mobileGap="48px">
               <ButtonLink
-                href="https://docs.near.org"
-                target="_blank"
+                value="datasets"
                 icon="ph-bold ph-book-open-text"
                 title="Datasets"
                 text="Stored in IPFS."
               />
               <ButtonLink
-                href="https://app.jutsu.ai/learn"
-                target="_blank"
+                value="models"
                 icon="ph-bold ph-video"
-                title="Full Models"
-                text="Try Jutsu.ai tutorials to build a decentralized frontend or a basic smart contract."
+                title="Models"
+                text="Model providers, and full Model weights."
               />
             </Flex>
           </Card>
