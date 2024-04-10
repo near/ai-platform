@@ -2,7 +2,7 @@ const {genSchema: genericGenSchema} = VM.require("${REPL_ACCOUNT}/widget/Entitie
 
 
 const genSchema = (ignored) => {
-    const namespace = "agiguild";
+    const namespace = "near";
     const entityType = "agent";
     const entityTitle = "Agent";
 

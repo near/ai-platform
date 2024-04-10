@@ -26,28 +26,28 @@ const schema = {
                 name: "Crowdsourcing",
                 value: "crowdsourcing",
                 content: <Widget src="${REPL_ACCOUNT}/widget/Entities.Template.GenericEntityConfig"
-                                 props={{namespace: 'agiguild', entityType: 'crowdsourcedDataset'}}/>,
+                                 props={{namespace: 'near', entityType: 'crowdsourcedDataset'}}/>,
                 icon: "ph ph-chart-bar-horizontal",
             },
             {
                 name: "Data marketplace",
                 value: "dataMarketplace",
                 content: <Widget src="${REPL_ACCOUNT}/widget/Entities.Template.GenericEntityConfig"
-                                 props={{namespace: 'agiguild', entityType: 'dataMarketplace'}}/>,
+                                 props={{namespace: 'near', entityType: 'dataMarketplace'}}/>,
                 icon: "ph ph-chart-bar-horizontal",
             },
             {
                 name: "Foundation",
                 value: "foundation",
                 content: <Widget src="${REPL_ACCOUNT}/widget/Entities.Template.GenericEntityConfig"
-                                 props={{namespace: 'agiguild', entityType: 'foundationDataset'}}/>,
+                                 props={{namespace: 'near', entityType: 'foundationDataset'}}/>,
                 icon: "ph ph-chart-bar-horizontal",
             },
             {
                 name: "Supervised Fine Tuning",
                 value: "fineTuning",
                 content: <Widget src="${REPL_ACCOUNT}/widget/Entities.Template.GenericEntityConfig"
-                                 props={{namespace: 'agiguild', entityType: 'fineTuningDataset',
+                                 props={{namespace: 'near', entityType: 'fineTuningDataset',
                                      title: 'Supervised Fine Tuning Datasets'}}/>,
                 icon: "ph ph-chart-bar-horizontal",
             },
@@ -55,7 +55,7 @@ const schema = {
                 name: "Alignment",
                 value: "alignment",
                 content: <Widget src="${REPL_ACCOUNT}/widget/Entities.Template.GenericEntityConfig"
-                                 props={{namespace: 'agiguild', entityType: 'alignmentDataset',
+                                 props={{namespace: 'near', entityType: 'alignmentDataset',
                                      title: 'Alignment Datasets: RLHF, DPO',
                                      schemaFile: "${REPL_AGIGUILD}/widget/Schema.AlignmentDataset"}}/>,
                 icon: "ph ph-chart-bar-horizontal",
@@ -71,7 +71,7 @@ const schema = {
                 name: "Providers",
                 value: "providers",
                 content: <Widget src="${REPL_ACCOUNT}/widget/Entities.Template.GenericEntityConfig"
-                                 props={{namespace: 'agiguild', entityType: 'modelProvider',
+                                 props={{namespace: 'near', entityType: 'modelProvider',
                                      schemaFile: "${REPL_AGIGUILD}/widget/Schema.Provider"}}/>,
                 icon: "ph ph-chart-bar-horizontal",
             },
@@ -79,7 +79,7 @@ const schema = {
                 name: "Standard Model Names",
                 value: "modelNames",
                 content: <Widget src="${REPL_ACCOUNT}/widget/Entities.Template.GenericEntityConfig"
-                                 props={{namespace: 'agiguild', entityType: 'modelName', title: 'Standard Model Names',
+                                 props={{namespace: 'near', entityType: 'modelName', title: 'Standard Model Names',
                                      schemaFile: "${REPL_AGIGUILD}/widget/Schema.ModelName"}}/>,
                 icon: "ph ph-chart-bar-horizontal",
             },
@@ -87,7 +87,7 @@ const schema = {
                 name: "Model Weights",
                 value: "models",
                 content: <Widget src="${REPL_ACCOUNT}/widget/Entities.Template.GenericEntityConfig"
-                                 props={{namespace: 'agiguild', entityType: 'model', title: 'Model Weights'}}/>,
+                                 props={{namespace: 'near', entityType: 'model', title: 'Model Weights'}}/>,
                 icon: "ph ph-chart-bar-horizontal",
             },
         ],
@@ -107,21 +107,21 @@ const schema = {
                 name: "Frameworks",
                 value: "frameworks",
                 content: <Widget src="${REPL_ACCOUNT}/widget/Entities.Template.GenericEntityConfig"
-                                 props={{namespace: 'agiguild', entityType: 'agentFramework'}}/>,
+                                 props={{namespace: 'near', entityType: 'agentFramework'}}/>,
                 icon: "ph ph-chart-bar-horizontal",
             },
             {
                 name: "Modules",
                 value: "modules",
                 content: <Widget src="${REPL_ACCOUNT}/widget/Entities.Template.GenericEntityConfig"
-                                 props={{namespace: 'agiguild', entityType: 'agentModule'}}/>,
+                                 props={{namespace: 'near', entityType: 'agentModule'}}/>,
                 icon: "ph ph-chart-bar-horizontal",
             },
             {
                 name: "User Interfaces",
                 value: "uis",
                 content: <Widget src="${REPL_ACCOUNT}/widget/Entities.Template.GenericEntityConfig"
-                                 props={{namespace: 'agiguild', entityType: 'customUI', title: 'Custom User Interfaces'}}/>,
+                                 props={{namespace: 'near', entityType: 'customUI', title: 'Custom User Interfaces'}}/>,
                 icon: "ph ph-chart-bar-horizontal",
             },
         ],
@@ -135,14 +135,14 @@ const schema = {
                 name: "On-chain Contracts",
                 value: "contracts",
                 content: <Widget src="${REPL_AGIGUILD}/widget/Entities.Template.GenericEntityConfig"
-                                 props={{namespace: 'agiguild', entityType: 'contractTool', title: 'On-Chain Contracts'}}/>,
+                                 props={{namespace: 'near', entityType: 'contractTool', title: 'On-Chain Contracts'}}/>,
                 icon: "ph ph-address-book",
             },
             {
                 name: "APIs",
                 value: "apis",
                 content: <Widget src="${REPL_ACCOUNT}/widget/Entities.Template.GenericEntityConfig"
-                                 props={{namespace: 'agiguild', entityType: 'apiTool', title: 'API Tools'}}/>,
+                                 props={{namespace: 'near', entityType: 'apiTool', title: 'API Tools'}}/>,
                 icon: "ph ph-chart-bar-horizontal",
             },
         ],
@@ -156,21 +156,21 @@ const schema = {
                 name: "Data Sources",
                 value: "dataSource",
                 content: <Widget src="${REPL_ACCOUNT}/widget/Entities.Template.GenericEntityConfig"
-                                 props={{namespace: 'agiguild', entityType: 'dataSource'}}/>,
+                                 props={{namespace: 'near', entityType: 'dataSource'}}/>,
                 icon: "ph ph-chart-bar-horizontal",
             },
             {
                 name: "Data Source Types",
                 value: "dataSourceType",
                 content: <Widget src="${REPL_ACCOUNT}/widget/Entities.Template.GenericEntityConfig"
-                                 props={{namespace: 'agiguild', entityType: 'dataSourceType'}}/>,
+                                 props={{namespace: 'near', entityType: 'dataSourceType'}}/>,
                 icon: "ph ph-chart-bar-horizontal",
             },
             {
                 name: "Delegated Permissions",
                 value: "delegation",
                 content: <Widget src="${REPL_ACCOUNT}/widget/Entities.Template.GenericEntityConfig"
-                                 props={{namespace: 'agiguild', entityType: 'delegation',
+                                 props={{namespace: 'near', entityType: 'delegation',
                                      title: 'Permissions you can Delegate'}}/>,
                 icon: "ph ph-chart-bar-horizontal",
             },
@@ -185,21 +185,21 @@ const schema = {
                 name: "Data Reputation",
                 value: "dataReputation",
                 content: <Widget src="${REPL_ACCOUNT}/widget/Entities.Template.GenericEntityConfig"
-                                 props={{namespace: 'agiguild', entityType: 'dataReputation'}}/>,
+                                 props={{namespace: 'near', entityType: 'dataReputation'}}/>,
                 icon: "ph ph-chart-bar-horizontal",
             },
             {
                 name: "Agent Reputation",
                 value: "agentReputation",
                 content: <Widget src="${REPL_ACCOUNT}/widget/Entities.Template.GenericEntityConfig"
-                                 props={{namespace: 'agiguild', entityType: 'agentReputation'}}/>,
+                                 props={{namespace: 'near', entityType: 'agentReputation'}}/>,
                 icon: "ph ph-chart-bar-horizontal",
             },
             {
                 name: "Compliance Proofs",
                 value: "proof",
                 content: <Widget src="${REPL_ACCOUNT}/widget/Entities.Template.GenericEntityConfig"
-                                 props={{namespace: 'agiguild', entityType: 'proof',
+                                 props={{namespace: 'near', entityType: 'proof',
                                      title: 'Compliance Proofs'}}/>,
                 icon: "ph ph-chart-bar-horizontal",
             },

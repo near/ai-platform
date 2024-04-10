@@ -293,7 +293,7 @@ const dummyData = {
   logo_url: "",
 };
 const prefillData = Array(TRENDING_APPS_LIMIT).fill(dummyData);
-const namespace = "agiguild";
+const namespace = "near";
 const entityType = "agent";
 const collection = "dataplatform_near_entities_entities";
 const buildQueries = () => {

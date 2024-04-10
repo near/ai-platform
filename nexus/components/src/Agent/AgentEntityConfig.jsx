@@ -15,7 +15,7 @@ const renderItem = (item, editFunction) => {
       props={{
         item: convertSnakeToPascal(flatItem),
         editFunction,
-        namespace: 'agiguild',
+        namespace: 'near',
         entityType: 'agent',
         schemaFile: "${REPL_AGIGUILD}/widget/Schema.Agent",
       }}
@@ -24,7 +24,7 @@ const renderItem = (item, editFunction) => {
 };
 return (
         <Widget src="${REPL_ACCOUNT}/widget/Entities.Template.GenericEntityConfig"
-                props={{namespace: 'agiguild', entityType: 'agent', title: 'Agent',
+                props={{namespace: 'near', entityType: 'agent', title: 'Agent',
                     schemaFile: "${REPL_AGIGUILD}/widget/Schema.Agent",
                     renderItem,
         }}/>
