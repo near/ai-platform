@@ -1,7 +1,7 @@
 
 
 const genSchema = () => {
-    const namespace = 'agiguild';
+    const namespace = 'near';
     const entityType = 'alignmentDataset';
     const entityTitle = 'Alignment Dataset';
     const title = entityTitle;

@@ -138,9 +138,9 @@ const createWidget = "${REPL_ACCOUNT}/widget/Entities.Template.EntityCreate";
 
 const loadItems = (queries, queryName, offset, collection, onLoad) => {
     const placeholderData = { data: [
-        {name: 'test1', displayName: 'Alpha Alpaca Aardvark Alumnus', accountId: 'agiguild.near', logoUrl: 'https://ipfs.near.social/ipfs/bafkreibysr2mkwhb4j36h2t7mqwhynqdy4vzjfygfkfg65kuspd2bawauu'},
-        {name: 'test2', displayName: 'Beta Barracuda Baleen Boilermaker', accountId: 'agiguild.near', logoUrl: 'https://ipfs.near.social/ipfs/bafkreibysr2mkwhb4j36h2t7mqwhynqdy4vzjfygfkfg65kuspd2bawauu'},
-        {name: 'test3', displayName: 'Gamma Guppy Gorilla Grapher', accountId: 'agiguild.near', logoUrl: 'https://ipfs.near.social/ipfs/bafkreibysr2mkwhb4j36h2t7mqwhynqdy4vzjfygfkfg65kuspd2bawauu'},
+        {name: 'test1', displayName: 'Alpha Alpaca Aardvark Alumnus', accountId: 'root.near', logoUrl: 'https://ipfs.near.social/ipfs/bafkreibysr2mkwhb4j36h2t7mqwhynqdy4vzjfygfkfg65kuspd2bawauu'},
+        {name: 'test2', displayName: 'Beta Barracuda Baleen Boilermaker', accountId: 'root.near', logoUrl: 'https://ipfs.near.social/ipfs/bafkreibysr2mkwhb4j36h2t7mqwhynqdy4vzjfygfkfg65kuspd2bawauu'},
+        {name: 'test3', displayName: 'Gamma Guppy Gorilla Grapher', accountId: 'root.near', logoUrl: 'https://ipfs.near.social/ipfs/bafkreibysr2mkwhb4j36h2t7mqwhynqdy4vzjfygfkfg65kuspd2bawauu'},
     ]};
     return Promise.resolve().then(() => onLoad(placeholderData.data, placeholderData.data.length));
 };

@@ -1,7 +1,7 @@
 const {genSchema: genericGenSchema} = VM.require("${REPL_ACCOUNT}/widget/Entities.Template.GenericSchema");
 
 const genSchema = (ignored) => {
-    const namespace = "agiguild";
+    const namespace = "near";
     const entityType = "modelName";
     const entityTitle = "Model Name";
 
@@ -22,13 +22,13 @@ const genSchema = (ignored) => {
         // we can have both!
         //     relationships: [
         //         {
-        //             namespace: "agiguild",
+        //             namespace: "near",
         //             entityType: "provider",
         //         }
         //     ],
         //     providers: {
         //         type: "object",
-        //         schema: "agiguild.provider",
+        //         schema: "near.provider",
         //     }
         // }
     };
