@@ -10,7 +10,7 @@ const Wrapper = styled.div`
     flex-direction: column;
   }
 `;
-const { schema } = VM.require(`${REPL_AGIGUILD}/widget/Schema.Nexus`);
+const { schema } = VM.require(`${REPL_ACCOUNT}/widget/Schema.Nexus`);
 if (!schema) {
   return <></>;
 }
@@ -56,7 +56,7 @@ const content = {
   overview: () => {
     return (
       <Widget
-        src="${REPL_AGIGUILD}/widget/Overview"
+        src="${REPL_ACCOUNT}/widget/Overview"
         props={{ handleMenuClick }}
       />
     );

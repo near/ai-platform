@@ -25,7 +25,7 @@ const agent = { accountId, name: agentName, ...data };
 if (!data) return "Loading...";
 
 const listLink = href({
-  widgetSrc: `${REPL_AGIGUILD}/widget/Nexus`,
+  widgetSrc: `${REPL_ACCOUNT}/widget/Nexus`,
 });
 
 const [settingsOpen, setSettingsOpen] = useState(false);
@@ -397,7 +397,7 @@ return (
             <div className="row">
               <div className="col-5">
                 <Widget
-                  src="${REPL_AGIGUILD}/widget/Agent.AgentSummary"
+                  src="${REPL_ACCOUNT}/widget/Agent.AgentSummary"
                   props={{
                     size: "small",
                     showTags: true,

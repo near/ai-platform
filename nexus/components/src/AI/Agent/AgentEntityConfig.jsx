@@ -11,13 +11,13 @@ const renderItem = (item, editFunction) => {
   delete flatItem.attributes;
   return (
     <Widget
-      src="${REPL_AGIGUILD}/widget/Agent.AgentCard"
+      src="${REPL_ACCOUNT}/widget/Agent.AgentCard"
       props={{
         item: convertSnakeToPascal(flatItem),
         editFunction,
         namespace: "near",
         entityType: "agent",
-        schemaFile: "${REPL_AGIGUILD}/widget/Schema.Agent",
+        schemaFile: "${REPL_ACCOUNT}/widget/Schema.Agent",
       }}
     />
   );
@@ -29,7 +29,7 @@ return (
       namespace: "near",
       entityType: "agent",
       title: "Agent",
-      schemaFile: "${REPL_AGIGUILD}/widget/Schema.Agent",
+      schemaFile: "${REPL_ACCOUNT}/widget/Schema.Agent",
       renderItem,
     }}
   />
