@@ -2,9 +2,11 @@ const { text, color, alpha } = props;
 
 const colorToVec3 = (hexStr, alpha) => {
   if (/^#([0-9A-F]{3}){1,2}$/i.test(hexStr)) {
-    const rbg = [hexStr.slice(1, 3), hexStr.slice(3, 5), hexStr.slice(5, 7)].map(
-      (x) => Math.round((parseInt(x, 16) / 255) * 1000) / 1000,
-    );
+    const rbg = [
+      hexStr.slice(1, 3),
+      hexStr.slice(3, 5),
+      hexStr.slice(5, 7),
+    ].map((x) => Math.round((parseInt(x, 16) / 255) * 1000) / 1000);
     return rbg.join(",") + (alpha ? "," + alpha : ",0.05");
   }
   return "0.067,0.094,0.11,0.05";

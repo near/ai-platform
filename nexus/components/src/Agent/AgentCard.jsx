@@ -4,7 +4,7 @@ if (!href) {
   return <></>;
 }
 
-const {namespace, entityType, schemaFile} = props;
+const { namespace, entityType, schemaFile } = props;
 
 const Card = styled.div`
   cursor: pointer;
@@ -48,13 +48,12 @@ const Card = styled.div`
     font-weight: 400;
   }
 `;
-const CardText = styled.div`
-`;
+const CardText = styled.div``;
 const Prompt = styled.span`
-    color: grey;
+  color: grey;
 `;
 const PromptTooltip = styled.span`
-    white-space: pre-line;
+  white-space: pre-line;
 `;
 const Actions = styled.div`
   padding-top: 16px;
@@ -64,22 +63,31 @@ const Actions = styled.div`
 `;
 const AgentCard = ({ item, editFunction }) => {
   const { accountId, name, displayName, prompt, logoUrl } = item;
-  const agentComponent = item.component ? item.component : `${REPL_AGIGUILD}/widget/Agent.AgentChat`;
-  const imageUrl = logoUrl ?
-          logoUrl : "https://ipfs.near.social/ipfs/bafkreibysr2mkwhb4j36h2t7mqwhynqdy4vzjfygfkfg65kuspd2bawauu";
+  const agentComponent = item.component
+    ? item.component
+    : `${REPL_AGIGUILD}/widget/Agent.AgentChat`;
+  const imageUrl = logoUrl
+    ? logoUrl
+    : "https://ipfs.near.social/ipfs/bafkreibysr2mkwhb4j36h2t7mqwhynqdy4vzjfygfkfg65kuspd2bawauu";
   const actionLink = href({
     widgetSrc: agentComponent,
     params: { src: `${accountId}/agent/${name}` },
   });
   const detailsLink = href({
-      widgetSrc: `${REPL_AGIGUILD}/widget/Agent.AgentDetails`,
-      params: { src: `${accountId}/agent/${name}`, schemaFile, namespace, entityType },
+    widgetSrc: `${REPL_AGIGUILD}/widget/Agent.AgentDetails`,
+    params: {
+      src: `${accountId}/agent/${name}`,
+      schemaFile,
+      namespace,
+      entityType,
+    },
   });
 
   const actionUrl = `https://${REPL_NEAR_URL}/${agentComponent}?src=${accountId}/agent/${item.name}`;
   const editType = accountId === context.accountId ? "edit" : "fork";
   const editLabel = editType === "edit" ? "Edit" : "Fork";
-  const editIcon = editType === "edit" ? "ph-bold ph-pencil-simple" : "ph-bold ph-git-fork";
+  const editIcon =
+    editType === "edit" ? "ph-bold ph-pencil-simple" : "ph-bold ph-git-fork";
 
   return (
     <Card>
@@ -96,7 +104,9 @@ const AgentCard = ({ item, editFunction }) => {
               src="${REPL_ACCOUNT}/widget/DIG.Tooltip"
               props={{
                 content: <PromptTooltip>{prompt}</PromptTooltip>,
-                trigger: <Prompt>{prompt ? prompt.substring(0, 50) : ""}...</Prompt>,
+                trigger: (
+                  <Prompt>{prompt ? prompt.substring(0, 50) : ""}...</Prompt>
+                ),
               }}
             />
           </CardText>

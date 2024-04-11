@@ -5,9 +5,12 @@ if (!href) {
 }
 
 const { entity, showActions } = props;
-const { accountId, name, displayName, prompt, logoUrl, tags, component } = entity;
+const { accountId, name, displayName, prompt, logoUrl, tags, component } =
+  entity;
 
-const agentComponent = item.component ? item.component : `${REPL_AGIGUILD}/widget/Agent.AgentChat`;
+const agentComponent = item.component
+  ? item.component
+  : `${REPL_AGIGUILD}/widget/Agent.AgentChat`;
 const chatLink = href({
   widgetSrc: agentComponent,
   params: { src: `${accountId}/agent/${name}` },
@@ -156,7 +159,8 @@ return (
           src="${REPL_MOB}/widget/Image"
           props={{
             image: { url: logoUrl },
-            fallbackUrl: "https://ipfs.near.social/ipfs/bafkreibysr2mkwhb4j36h2t7mqwhynqdy4vzjfygfkfg65kuspd2bawauu",
+            fallbackUrl:
+              "https://ipfs.near.social/ipfs/bafkreibysr2mkwhb4j36h2t7mqwhynqdy4vzjfygfkfg65kuspd2bawauu",
             alt: name,
           }}
         />
@@ -192,7 +196,8 @@ return (
                   src="${REPL_ACCOUNT}/widget/DIG.Button"
                   props={{
                     label: "Delete",
-                    disabled: !context.accountId || context.accountId !== accountId,
+                    disabled:
+                      !context.accountId || context.accountId !== accountId,
                     // onClick: () => delete(agent.name),
                     iconLeft: "ph-bold ph-trash",
                     variant: "destructive",
@@ -228,9 +233,16 @@ return (
             },
             notifyAccountId: accountId,
             button: (starCount, starIsActive, starOnClick) => (
-              <Button type="button" onClick={starOnClick} aria-label="Star this agent">
+              <Button
+                type="button"
+                onClick={starOnClick}
+                aria-label="Star this agent"
+              >
                 {starIsActive ? (
-                  <i className="bi bi-star-fill" style={{ color: "var(--amber10)" }} />
+                  <i
+                    className="bi bi-star-fill"
+                    style={{ color: "var(--amber10)" }}
+                  />
                 ) : (
                   <i className="bi bi-star" />
                 )}{" "}

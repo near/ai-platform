@@ -189,7 +189,8 @@ const ButtonLinkWrapper = styled("Link")`
     }
 
     .trending-round-icon {
-      filter: drop-shadow(0px 4px 8px rgba(0, 0, 0, 0.06)) drop-shadow(0px 0px 0px rgba(0, 0, 0, 0.06));
+      filter: drop-shadow(0px 4px 8px rgba(0, 0, 0, 0.06))
+        drop-shadow(0px 0px 0px rgba(0, 0, 0, 0.06));
     }
   }
 
@@ -204,7 +205,8 @@ const ButtonLinkWrapper = styled("Link")`
     }
 
     .trending-round-icon {
-      filter: drop-shadow(0px 4px 8px var(--violet6)) drop-shadow(0px 0px 0px var(--violet6));
+      filter: drop-shadow(0px 4px 8px var(--violet6))
+        drop-shadow(0px 0px 0px var(--violet6));
     }
   }
 `;
@@ -271,7 +273,7 @@ const { href } = VM.require("${REPL_DEVHUB}/widget/core.lib.url");
 if (!href) {
   return <p>Loading modules...</p>;
 }
-const {handleMenuClick} = props;
+const { handleMenuClick } = props;
 
 const TRENDING_APPS_LIMIT = 6;
 const dummyData = {
@@ -314,19 +316,21 @@ query ListQuery($offset: Int, $limit: Int) {
 `;
 };
 const queryName = "ListQuery";
-const loadItemsQueryApi = VM.require("${REPL_ACCOUNT}/widget/Entities.QueryApi.Client")?.loadItems;
+const loadItemsQueryApi = VM.require(
+  "${REPL_ACCOUNT}/widget/Entities.QueryApi.Client",
+)?.loadItems;
 if (!loadItemsQueryApi) {
-    return <p>Loading modules...</p>;
+  return <p>Loading modules...</p>;
 }
 
 const [topRatingApps, setTopRatingApps] = useState(prefillData);
 const [loading, setLoading] = useState(true);
 
 const onLoad = (newItems, totalItems) => {
-    const items = newItems ? newItems.slice(0, TRENDING_APPS_LIMIT) : [];
-    setTopRatingApps(items);
-    setLoading(false);
-}
+  const items = newItems ? newItems.slice(0, TRENDING_APPS_LIMIT) : [];
+  setTopRatingApps(items);
+  setLoading(false);
+};
 
 loadItemsQueryApi(buildQueries(), queryName, 0, collection, onLoad);
 
@@ -349,7 +353,12 @@ const RoundIcon = ({ url, ...forwardedProps }) => (
 );
 
 const ButtonLink = ({ href, value, target, icon, title, text }) => (
-  <ButtonMenuWrapper onClick={() => handleMenuClick(value)} target={target} $gap="24px" $padding="24px">
+  <ButtonMenuWrapper
+    onClick={() => handleMenuClick(value)}
+    target={target}
+    $gap="24px"
+    $padding="24px"
+  >
     <Icon
       className={icon}
       $size="40px"
@@ -415,7 +424,13 @@ const TrendingApp = ({ href, url, name, loading }) => (
       $filter="drop-shadow(0px 4px 8px rgba(0, 0, 0, 0.06)) drop-shadow(0px 0px 0px rgba(0, 0, 0, 0.06))"
       $loading={loading}
     />
-    <Text $size="text-s" $fontWeight="600" $overflowLines="2" $letterSpacing="0.28px" $loading={loading}>
+    <Text
+      $size="text-s"
+      $fontWeight="600"
+      $overflowLines="2"
+      $letterSpacing="0.28px"
+      $loading={loading}
+    >
       {name}
     </Text>
   </ButtonLinkWrapper>
@@ -424,14 +439,27 @@ return (
   <Wrapper>
     <Section>
       <Container>
-        <Pattern $background="linear-gradient(264deg, #CFCCF5 0%, #A39CEC 99.35%)" $borderRadius="16px">
-          <PatternContent $padding="55px 24px 55px 48px" $mobilePadding="48px 20px">
+        <Pattern
+          $background="linear-gradient(264deg, #CFCCF5 0%, #A39CEC 99.35%)"
+          $borderRadius="16px"
+        >
+          <PatternContent
+            $padding="55px 24px 55px 48px"
+            $mobilePadding="48px 20px"
+          >
             <Grid $gap="24px" $columns="1fr 1fr">
               <Flex $direction="column" $gap="32px">
-                <div style={{width: '250px'}}>
-                  <Widget src="${REPL_AGIGUILD}/widget/HeaderText" props={{text: "NEAR AI", color: "#01080c"}}/>
+                <div style={{ width: "250px" }}>
+                  <Widget
+                    src="${REPL_AGIGUILD}/widget/HeaderText"
+                    props={{ text: "NEAR AI", color: "#01080c" }}
+                  />
                 </div>
-                <Text $size="text-xl" $mobileSize="text-l" style={{ maxWidth: "385px" }}>
+                <Text
+                  $size="text-xl"
+                  $mobileSize="text-l"
+                  style={{ maxWidth: "385px" }}
+                >
                   Take control - Use or contribute to Open Source AI.
                 </Text>
               </Flex>
@@ -460,18 +488,22 @@ return (
         <Grid $gap="24px" $mobileGap="20px" $columns="1fr 1fr">
           <Card
             title="Trending Agents"
-            text={
-              <>
-                Explore agents built by the
-                NEAR community.
-              </>
-            }
+            text={<>Explore agents built by the NEAR community.</>}
           >
-            <Grid $gap="20px" $rowGap="24px" $columns="1fr 1fr" $mobileColumns="1fr 1fr">
+            <Grid
+              $gap="20px"
+              $rowGap="24px"
+              $columns="1fr 1fr"
+              $mobileColumns="1fr 1fr"
+            >
               {topRatingApps.map((app) => (
                 <TrendingApp
                   key={app.name}
-                  href={buildAgentUrl(app.attributes.component, app.account_id, app.name)}
+                  href={buildAgentUrl(
+                    app.attributes.component,
+                    app.account_id,
+                    app.name,
+                  )}
                   url={app.logo_url}
                   name={app.display_name}
                   loading={loading}
@@ -502,39 +534,33 @@ return (
       </Container>
     </Section>
     <Section>
-        <Card
-            title="Contribute to the NEAR AI Nexus"
-            text={
-              <>
-              This directory is all on-chain.
-              </>
-            }
-        >
-          <Grid $gap="20px" $columns="1fr 1fr">
-            <TrendingApp
-                href="https://github.com/near/ai-platform/tree/develop/nexus/components/src/Schema"
-                url="https://near.org/_next/static/media/near-icon.2e682d59.svg"
-                name="ai-platform"
-                loading={false}
-            />
-            <TrendingApp
-                href="https://github.com/near/near-discovery-components/tree/develop/src/Entities/Template"
-                url="https://near.org/_next/static/media/near-icon.2e682d59.svg"
-                name="entity-components"
-                loading={false}
-            />
-          </Grid>
-          <Text style={{overflow: 'visible'}}>
-            <p>
-              You can add or fork any of the existing resource types.
-            </p>
-            <p>
-              If you need more, this UI is composed of React-on-Chain components as is the
-              schema for each type of resource. You can add new fields to resources
-              and add whole new types of resources.
-            </p>
-          </Text>
-        </Card>
+      <Card
+        title="Contribute to the NEAR AI Nexus"
+        text={<>This directory is all on-chain.</>}
+      >
+        <Grid $gap="20px" $columns="1fr 1fr">
+          <TrendingApp
+            href="https://github.com/near/ai-platform/tree/develop/nexus/components/src/Schema"
+            url="https://near.org/_next/static/media/near-icon.2e682d59.svg"
+            name="ai-platform"
+            loading={false}
+          />
+          <TrendingApp
+            href="https://github.com/near/near-discovery-components/tree/develop/src/Entities/Template"
+            url="https://near.org/_next/static/media/near-icon.2e682d59.svg"
+            name="entity-components"
+            loading={false}
+          />
+        </Grid>
+        <Text style={{ overflow: "visible" }}>
+          <p>You can add or fork any of the existing resource types.</p>
+          <p>
+            If you need more, this UI is composed of React-on-Chain components
+            as is the schema for each type of resource. You can add new fields
+            to resources and add whole new types of resources.
+          </p>
+        </Text>
+      </Card>
     </Section>
   </Wrapper>
 );

@@ -3,20 +3,15 @@ const Instructions = styled.div`
   color: #555;
 `;
 return (
-    <div>
+  <div>
     <Instructions>
-        <p>This is your personal Dashboard</p>
+      <p>This is your personal Dashboard</p>
 
-        <div style={{paddingLeft: "2em"}}>
-            <p>
-                It will contain
-            </p>
-            <p>
-                Usage of Agents, Datasets, etc that you have contributed.
-            </p>
-            <p>
-                Your favorite Agents.
-            </p>
-        </div>
+      <div style={{ paddingLeft: "2em" }}>
+        <p>It will contain</p>
+        <p>Usage of Agents, Datasets, etc that you have contributed.</p>
+        <p>Your favorite Agents.</p>
+      </div>
     </Instructions>
-</div>)
+  </div>
+);

@@ -34,10 +34,16 @@ const [loading, setLoading] = useState(false);
 const [messages, setMessages] = useState([]);
 
 const [model, setModel] = useState(storedModel ?? "near-llama-7b");
-const [localModel, setLocalModel] = useState(storedLocalModel ?? "http://localhost:1234/v1/chat/completions");
-const [credentialType, setCredentialType] = useState(storedCredentialType ?? "bearer");
+const [localModel, setLocalModel] = useState(
+  storedLocalModel ?? "http://localhost:1234/v1/chat/completions",
+);
+const [credentialType, setCredentialType] = useState(
+  storedCredentialType ?? "bearer",
+);
 const [credential, setCredential] = useState(storedCredential ?? "");
-const [jsonOutputSetting, setJsonOutputSetting] = useState(storedJsonOutputSetting ?? false);
+const [jsonOutputSetting, setJsonOutputSetting] = useState(
+  storedJsonOutputSetting ?? false,
+);
 
 useEffect(() => {
   Storage.set("agent-model", model);
@@ -131,10 +137,7 @@ const openAICompatible = async (question) => {
     responseType: "json",
     body: JSON.stringify({
       ...options,
-      messages: [
-        { role: "system", content: data.prompt },
-          ...messages,
-      ],
+      messages: [{ role: "system", content: data.prompt }, ...messages],
     }),
   }).then((response) => {
     const answer = response.body.choices[0].message.content;
@@ -162,7 +165,10 @@ const submitQuestion = () => {
 };
 const requiresCredentials = (model) => {
   return (
-    model === "gpt-4" || model === "gpt-3.5-turbo" || model === "mixtral-8x7b-32768" || model === "llama2-70b-4096"
+    model === "gpt-4" ||
+    model === "gpt-3.5-turbo" ||
+    model === "mixtral-8x7b-32768" ||
+    model === "llama2-70b-4096"
   );
 };
 
@@ -237,7 +243,8 @@ const renderSettings = () => {
   return (
     <Settings>
       <CardControl bold onClick={toggleSettings}>
-        <i className={settingsOpen ? "ph ph-caret-up" : "ph ph-caret-down"} /> Settings
+        <i className={settingsOpen ? "ph ph-caret-up" : "ph ph-caret-down"} />{" "}
+        Settings
       </CardControl>
       {settingsOpen && (
         <AllSettings>
@@ -307,7 +314,8 @@ const renderSettings = () => {
                 src="${REPL_ACCOUNT}/widget/DIG.Input"
                 props={{
                   label: "Local Model URL",
-                  assistiveText: "Any url that accepts messages in OpenAI format",
+                  assistiveText:
+                    "Any url that accepts messages in OpenAI format",
                   iconLeft: "ph-bold ph-horse",
                   onInput: (e) => setLocalModel(e.target.value),
                   value: localModel,
@@ -345,7 +353,8 @@ const renderSettings = () => {
                   src="${REPL_ACCOUNT}/widget/DIG.Input"
                   props={{
                     label: "Credentials",
-                    assistiveText: "Your OpenAI API Key or other credentials, will be stored in your browser.",
+                    assistiveText:
+                      "Your OpenAI API Key or other credentials, will be stored in your browser.",
                     iconLeft: "ph-bold ph-identification-card",
                     onInput: (e) => setCredential(e.target.value),
                     value: credential,
@@ -409,8 +418,8 @@ return (
         {renderSettings()}
         {requiresCredentials(model) && credential === "" && (
           <div className="alert alert-danger mx-3" role="alert">
-            <i className="ph ph-alert-circle" /> To use an OpenAI or Groq model enter your API Key in Settings or change
-            to another provider.
+            <i className="ph ph-alert-circle" /> To use an OpenAI or Groq model
+            enter your API Key in Settings or change to another provider.
           </div>
         )}
         <div className="input-group">
@@ -436,7 +445,9 @@ return (
               fill: "solid",
               size: "large",
               label: "Submit",
-              disabled: (requiresCredentials(model) && credential === "") || question === "",
+              disabled:
+                (requiresCredentials(model) && credential === "") ||
+                question === "",
               style: {
                 borderTopLeftRadius: "0rem",
                 borderBottomLeftRadius: "0rem",
@@ -451,7 +462,10 @@ return (
             <div key={i} className={`message ${role}`}>
               {role === "user" && (
                 <UserMessage>
-                  <Widget src="${REPL_MOB}/widget/N.ProfileLine" props={{ accountId: context.accountId }} />
+                  <Widget
+                    src="${REPL_MOB}/widget/N.ProfileLine"
+                    props={{ accountId: context.accountId }}
+                  />
                   <Markdown text={content} />
                 </UserMessage>
               )}
@@ -466,7 +480,11 @@ return (
         {loading && (
           <div key="loading" className={`message system`}>
             <div>
-              <span className="spinner-grow spinner-grow-sm me-1" role="status" aria-hidden="true" />
+              <span
+                className="spinner-grow spinner-grow-sm me-1"
+                role="status"
+                aria-hidden="true"
+              />
             </div>
           </div>
         )}
