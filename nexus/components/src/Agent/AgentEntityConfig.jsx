@@ -1,13 +1,13 @@
 const convertSnakeToPascal = (item) => {
-    const newItems = {};
-    Object.keys(item).forEach((key) => {
+  const newItems = {};
+  Object.keys(item).forEach((key) => {
     const pascalKey = key.replace(/(_\w)/g, (m) => m[1].toUpperCase());
     newItems[pascalKey] = item[key];
   });
   return newItems;
 };
 const renderItem = (item, editFunction) => {
-  const flatItem = {...item, ...item.attributes};
+  const flatItem = { ...item, ...item.attributes };
   delete flatItem.attributes;
   return (
     <Widget
@@ -15,17 +15,22 @@ const renderItem = (item, editFunction) => {
       props={{
         item: convertSnakeToPascal(flatItem),
         editFunction,
-        namespace: 'near',
-        entityType: 'agent',
+        namespace: "near",
+        entityType: "agent",
         schemaFile: "${REPL_AGIGUILD}/widget/Schema.Agent",
       }}
     />
   );
 };
 return (
-        <Widget src="${REPL_ACCOUNT}/widget/Entities.Template.GenericEntityConfig"
-                props={{namespace: 'near', entityType: 'agent', title: 'Agent',
-                    schemaFile: "${REPL_AGIGUILD}/widget/Schema.Agent",
-                    renderItem,
-        }}/>
-)
+  <Widget
+    src="${REPL_ACCOUNT}/widget/Entities.Template.GenericEntityConfig"
+    props={{
+      namespace: "near",
+      entityType: "agent",
+      title: "Agent",
+      schemaFile: "${REPL_AGIGUILD}/widget/Schema.Agent",
+      renderItem,
+    }}
+  />
+);
