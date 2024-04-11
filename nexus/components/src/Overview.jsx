@@ -7,18 +7,6 @@ const Wrapper = styled.div`
   max-width: 960px;
 `;
 
-const H1 = styled.h1`
-  font: var(--text-hero);
-  color: var(--black);
-  margin: 0;
-  padding-top: 24px;
-
-  @media (max-width: 900px) {
-    padding-top: 0;
-    font-size: 36px;
-  }
-`;
-
 const Text = styled.p`
   font: var(--${(p) => p.$size ?? "text-base"});
   font-weight: ${(p) => p.$fontWeight} !important;
@@ -392,7 +380,7 @@ const Card = ({ title, text, children }) => (
     $shadow="0px 0px 0px 1px rgba(0, 0, 0, 0.02), 0px 4px 8px 0px rgba(0, 0, 0, 0.06)"
   >
     <PatternContent $padding="24px">
-      <Flex $direction="column" $gap="56px" $mobileGap="48px">
+      <Flex $direction="column" $gap="36px" $mobileGap="24px">
         <Flex $direction="column" $gap="24px">
           <Text $size="text-xl" $fontWeight="500">
             {title}
@@ -432,24 +420,25 @@ const TrendingApp = ({ href, url, name, loading }) => (
     </Text>
   </ButtonLinkWrapper>
 );
-
 return (
-  <Wrapper className="gateway-page-container">
+  <Wrapper>
     <Section>
       <Container>
         <Pattern $background="linear-gradient(264deg, #CFCCF5 0%, #A39CEC 99.35%)" $borderRadius="16px">
           <PatternContent $padding="55px 24px 55px 48px" $mobilePadding="48px 20px">
             <Grid $gap="24px" $columns="1fr 1fr">
               <Flex $direction="column" $gap="32px">
-                <H1>Get Started</H1>
+                <div style={{width: '250px'}}>
+                  <Widget src="${REPL_AGIGUILD}/widget/HeaderText" props={{text: "NEAR AI", color: "#01080c"}}/>
+                </div>
                 <Text $size="text-xl" $mobileSize="text-l" style={{ maxWidth: "385px" }}>
-                  Let's find what you need.
+                  Take control - Use or contribute to Open Source AI.
                 </Text>
               </Flex>
               <Flex $direction="column" $gap="16px" $mobileGap="48px">
                 <ButtonLink
                   value="agents"
-                  icon="ph-bold ph-plus"
+                  icon="ph-bold ph-binoculars"
                   title="Find an Agent"
                   text="Put AI Agents to work for you"
                 />
@@ -497,13 +486,13 @@ return (
             <Flex $direction="column" $gap="16px" $mobileGap="48px">
               <ButtonLink
                 value="datasets"
-                icon="ph-bold ph-book-open-text"
+                icon="ph-bold ph-file-text"
                 title="Datasets"
                 text="Stored in IPFS."
               />
               <ButtonLink
                 value="models"
-                icon="ph-bold ph-video"
+                icon="ph-bold ph-graph"
                 title="Models"
                 text="Model providers, and full Model weights."
               />
@@ -511,6 +500,41 @@ return (
           </Card>
         </Grid>
       </Container>
+    </Section>
+    <Section>
+        <Card
+            title="Contribute to the NEAR AI Nexus"
+            text={
+              <>
+              This directory is all on-chain.
+              </>
+            }
+        >
+          <Grid $gap="20px" $columns="1fr 1fr">
+            <TrendingApp
+                href="https://github.com/near/ai-platform/tree/develop/nexus/components/src/Schema"
+                url="https://near.org/_next/static/media/near-icon.2e682d59.svg"
+                name="ai-platform"
+                loading={false}
+            />
+            <TrendingApp
+                href="https://github.com/near/near-discovery-components/tree/develop/src/Entities/Template"
+                url="https://near.org/_next/static/media/near-icon.2e682d59.svg"
+                name="entity-components"
+                loading={false}
+            />
+          </Grid>
+          <Text style={{overflow: 'visible'}}>
+            <p>
+              You can add or fork any of the existing resource types.
+            </p>
+            <p>
+              If you need more, this UI is composed of React-on-Chain components as is the
+              schema for each type of resource. You can add new fields to resources
+              and add whole new types of resources.
+            </p>
+          </Text>
+        </Card>
     </Section>
   </Wrapper>
 );
