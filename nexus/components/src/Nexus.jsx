@@ -4,6 +4,11 @@ const Wrapper = styled.div`
   grid-template-columns: 244px 1.5fr;
   align-items: start;
   height: 100%;
+
+  @media (max-width: 750px) {
+    display: flex;
+    flex-direction: column;
+  }
 `;
 const { schema } = VM.require(`${REPL_AGIGUILD}/widget/Schema.Nexus`);
 if (!schema ) {
@@ -44,10 +49,7 @@ if (!paramsHandled && props.group && props.group !== activeGroup) {
 const content = {
     overview: () => {
         return (
-            <div>
-                <Widget src="${REPL_AGIGUILD}/widget/HeaderText" props={{text: "NEAR AI", color: "#11181c"}}/>
-                <Widget src="${REPL_AGIGUILD}/widget/Overview" props={{handleMenuClick}}/>
-            </div>
+            <Widget src="${REPL_AGIGUILD}/widget/Overview" props={{handleMenuClick}}/>
         );
     },
     subGroups: (groupName, group) => {
