@@ -451,7 +451,7 @@ return (
               <Flex $direction="column" $gap="32px">
                 <div style={{ width: "250px" }}>
                   <Widget
-                    src="${REPL_AGIGUILD}/widget/HeaderText"
+                    src="${REPL_ACCOUNT}/widget/AI.HeaderText"
                     props={{ text: "NEAR AI", color: "#01080c" }}
                   />
                 </div>

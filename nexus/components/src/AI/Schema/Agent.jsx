@@ -28,7 +28,7 @@ const genSchema = (ignored) => {
         min: 0,
         max: 255,
         placeholder:
-          "The component used to run the agent, default is ${REPL_ACCOUNT}/widget/Agent.AgentChat",
+          "The component used to run the agent, default is ${REPL_ACCOUNT}/widget/AI.Agent.AgentChat",
         required: false,
       },
       label: "Component",
