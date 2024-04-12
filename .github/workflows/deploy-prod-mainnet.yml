@@ -7,6 +7,7 @@ jobs:
     runs-on: ubuntu-latest
     name: Deploy widgets via adminalpha.near to near (mainnet)
     env:
+      NEAR_SOCIAL_DEPLOY_ID: ${{ vars.NEAR_SOCIAL_DEPLOY_ID }}
       NEAR_SOCIAL_ACCOUNT_ID: ${{ vars.NEAR_SOCIAL_ACCOUNT_ID }}
       NEAR_SOCIAL_ACCOUNT_PUBLIC_KEY: ${{ vars.NEAR_SOCIAL_ACCOUNT_PUBLIC_KEY }}
       NEAR_SOCIAL_ACCOUNT_PRIVATE_KEY: ${{ secrets.NEAR_SOCIAL_ACCOUNT_PRIVATE_KEY }}
