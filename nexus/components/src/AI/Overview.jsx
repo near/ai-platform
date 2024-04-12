@@ -540,7 +540,7 @@ return (
       >
         <Grid $gap="20px" $columns="1fr 1fr">
           <TrendingApp
-            href="https://github.com/near/ai-platform/tree/develop/nexus/components/src/Schema"
+            href="https://github.com/near/ai-platform/tree/develop/nexus/components/src/AI/Schema"
             url="https://near.org/_next/static/media/near-icon.2e682d59.svg"
             name="ai-platform"
             loading={false}
