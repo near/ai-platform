@@ -5,7 +5,7 @@ on:
 jobs:
   deploy-widgets:
     runs-on: ubuntu-latest
-    name: Deploy widgets to agiguild.near (mainnet)
+    name: Deploy widgets via adminalpha.near to near (mainnet)
     env:
       NEAR_SOCIAL_ACCOUNT_ID: ${{ vars.NEAR_SOCIAL_ACCOUNT_ID }}
       NEAR_SOCIAL_ACCOUNT_PUBLIC_KEY: ${{ vars.NEAR_SOCIAL_ACCOUNT_PUBLIC_KEY }}

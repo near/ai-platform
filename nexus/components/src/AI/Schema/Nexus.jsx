@@ -79,7 +79,7 @@ const schema = {
               namespace: "near",
               entityType: "alignmentDataset",
               title: "Alignment Datasets: RLHF, DPO",
-              schemaFile: "${REPL_ACCOUNT}/widget/Schema.AlignmentDataset",
+              schemaFile: "${REPL_ACCOUNT}/widget/AI.Schema.AlignmentDataset",
             }}
           />
         ),
@@ -101,7 +101,7 @@ const schema = {
             props={{
               namespace: "near",
               entityType: "modelProvider",
-              schemaFile: "${REPL_ACCOUNT}/widget/Schema.Provider",
+              schemaFile: "${REPL_ACCOUNT}/widget/AI.Schema.Provider",
             }}
           />
         ),
@@ -117,7 +117,7 @@ const schema = {
               namespace: "near",
               entityType: "modelName",
               title: "Standard Model Names",
-              schemaFile: "${REPL_ACCOUNT}/widget/Schema.ModelName",
+              schemaFile: "${REPL_ACCOUNT}/widget/AI.Schema.ModelName",
             }}
           />
         ),
@@ -149,7 +149,7 @@ const schema = {
         name: "Agents",
         value: "agents",
         content: (
-          <Widget src="${REPL_ACCOUNT}/widget/Agent.AgentEntityConfig" />
+          <Widget src="${REPL_ACCOUNT}/widget/AI.Agent.AgentEntityConfig" />
         ),
         icon: "ph ph-address-book",
       },

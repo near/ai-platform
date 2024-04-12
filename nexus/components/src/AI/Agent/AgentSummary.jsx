@@ -10,7 +10,7 @@ const { accountId, name, displayName, prompt, logoUrl, tags, component } =
 
 const agentComponent = item.component
   ? item.component
-  : `${REPL_ACCOUNT}/widget/Agent.AgentChat`;
+  : `${REPL_ACCOUNT}/widget/AI.Agent.AgentChat`;
 const chatLink = href({
   widgetSrc: agentComponent,
   params: { src: `${accountId}/agent/${name}` },

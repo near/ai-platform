@@ -10,7 +10,7 @@ const Wrapper = styled.div`
     flex-direction: column;
   }
 `;
-const { schema } = VM.require(`${REPL_ACCOUNT}/widget/Schema.Nexus`);
+const { schema } = VM.require(`${REPL_ACCOUNT}/widget/AI.Schema.Nexus`);
 if (!schema) {
   return <></>;
 }
@@ -56,7 +56,7 @@ const content = {
   overview: () => {
     return (
       <Widget
-        src="${REPL_ACCOUNT}/widget/Overview"
+        src="${REPL_ACCOUNT}/widget/AI.Overview"
         props={{ handleMenuClick }}
       />
     );
@@ -87,7 +87,7 @@ const content = {
     );
   },
   dashboard: () => {
-    return <Widget src="${REPL_ACCOUNT}/widget/Dashboard" props={{}} />;
+    return <Widget src="${REPL_ACCOUNT}/widget/AI.Dashboard" props={{}} />;
   },
 };
 

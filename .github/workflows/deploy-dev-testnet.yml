@@ -5,7 +5,7 @@ on:
 jobs:
   deploy-widgets:
     runs-on: ubuntu-latest
-    name: Deploy widgets to agiguild-dev.testnet
+    name: Deploy widgets to discom-dev.testnet
     env:
       NEAR_SOCIAL_ACCOUNT_ID: ${{ vars.NEAR_SOCIAL_TESTNET_DEV_ACCOUNT_ID }}
       NEAR_SOCIAL_ACCOUNT_PUBLIC_KEY: ${{ vars.NEAR_SOCIAL_TESTNET_DEV_ACCOUNT_PUBLIC_KEY }}

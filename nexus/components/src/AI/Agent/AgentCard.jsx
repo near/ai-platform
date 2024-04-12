@@ -65,7 +65,7 @@ const AgentCard = ({ item, editFunction }) => {
   const { accountId, name, displayName, prompt, logoUrl } = item;
   const agentComponent = item.component
     ? item.component
-    : `${REPL_ACCOUNT}/widget/Agent.AgentChat`;
+    : `${REPL_ACCOUNT}/widget/AI.Agent.AgentChat`;
   const imageUrl = logoUrl
     ? logoUrl
     : "https://ipfs.near.social/ipfs/bafkreibysr2mkwhb4j36h2t7mqwhynqdy4vzjfygfkfg65kuspd2bawauu";
@@ -74,7 +74,7 @@ const AgentCard = ({ item, editFunction }) => {
     params: { src: `${accountId}/agent/${name}` },
   });
   const detailsLink = href({
-    widgetSrc: `${REPL_ACCOUNT}/widget/Agent.AgentDetails`,
+    widgetSrc: `${REPL_ACCOUNT}/widget/AI.Agent.AgentDetails`,
     params: {
       src: `${accountId}/agent/${name}`,
       schemaFile,

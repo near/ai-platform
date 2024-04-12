@@ -1,6 +1,6 @@
 let { src, tab, schemaFile, namespace } = props;
 
-const summaryComponent = "${REPL_ACCOUNT}/widget/Agent.AgentSummary";
+const summaryComponent = "${REPL_ACCOUNT}/widget/AI.Agent.AgentSummary";
 const customComponentLabel = (component) => {
   if (component === `near/widget/Agent.AgentChat`) {
     return "Chat";
@@ -19,7 +19,7 @@ const customComponentLabel = (component) => {
 const additionalTabs = (entity) => {
   const agentComponent = entity.component
     ? entity.component
-    : `${REPL_ACCOUNT}/widget/Agent.AgentChat`;
+    : `${REPL_ACCOUNT}/widget/AI.Agent.AgentChat`;
 
   return {
     name: customComponentLabel(agentComponent),

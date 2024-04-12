@@ -34,7 +34,7 @@ const renderItem = (item, editFunction) => {
   const { accountId, name, displayName, logoUrl } = item;
   const itemComponent = item.component
     ? item.component
-    : `${REPL_ACCOUNT}/widget/Agent.AgentChat`;
+    : `${REPL_ACCOUNT}/widget/AI.Agent.AgentChat`;
   const imageUrl =
     logoUrl ??
     "https://ipfs.near.social/ipfs/bafkreibysr2mkwhb4j36h2t7mqwhynqdy4vzjfygfkfg65kuspd2bawauu";
@@ -43,7 +43,7 @@ const renderItem = (item, editFunction) => {
     params: { src: `${accountId}/agent/${name}` },
   });
   const detailsLink = href({
-    widgetSrc: `${REPL_ACCOUNT}/widget/Agent.AgentDetails`,
+    widgetSrc: `${REPL_ACCOUNT}/widget/AI.Agent.AgentDetails`,
     params: { src: `${accountId}/agent/${name}` },
   });
 
