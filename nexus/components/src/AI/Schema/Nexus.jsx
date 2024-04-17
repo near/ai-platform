@@ -11,6 +11,8 @@
 //   Papers
 //   Data sources: Vector DBs, Near Social,
 //   Private data sources: personal RAG, idOS
+const homeLink = "${REPL_ACCOUNT}/widget/AI.Nexus";
+
 const schema = {
   overview: {
     title: "Overview",
@@ -27,7 +29,11 @@ const schema = {
         content: (
           <Widget
             src="${REPL_ACCOUNT}/widget/Entities.Template.GenericEntityConfig"
-            props={{ namespace: "near", entityType: "crowdsourcedDataset" }}
+            props={{
+              namespace: "near",
+              homeLink,
+              entityType: "crowdsourcedDataset",
+            }}
           />
         ),
         icon: "ph ph-chart-bar-horizontal",
@@ -38,7 +44,11 @@ const schema = {
         content: (
           <Widget
             src="${REPL_ACCOUNT}/widget/Entities.Template.GenericEntityConfig"
-            props={{ namespace: "near", entityType: "dataMarketplace" }}
+            props={{
+              namespace: "near",
+              homeLink,
+              entityType: "dataMarketplace",
+            }}
           />
         ),
         icon: "ph ph-chart-bar-horizontal",
@@ -49,7 +59,11 @@ const schema = {
         content: (
           <Widget
             src="${REPL_ACCOUNT}/widget/Entities.Template.GenericEntityConfig"
-            props={{ namespace: "near", entityType: "foundationDataset" }}
+            props={{
+              namespace: "near",
+              homeLink,
+              entityType: "foundationDataset",
+            }}
           />
         ),
         icon: "ph ph-chart-bar-horizontal",
@@ -62,6 +76,7 @@ const schema = {
             src="${REPL_ACCOUNT}/widget/Entities.Template.GenericEntityConfig"
             props={{
               namespace: "near",
+              homeLink,
               entityType: "fineTuningDataset",
               title: "Supervised Fine Tuning Datasets",
             }}
@@ -77,6 +92,7 @@ const schema = {
             src="${REPL_ACCOUNT}/widget/Entities.Template.GenericEntityConfig"
             props={{
               namespace: "near",
+              homeLink,
               entityType: "alignmentDataset",
               title: "Alignment Datasets: RLHF, DPO",
               schemaFile: "${REPL_ACCOUNT}/widget/AI.Schema.AlignmentDataset",
@@ -100,6 +116,7 @@ const schema = {
             src="${REPL_ACCOUNT}/widget/Entities.Template.GenericEntityConfig"
             props={{
               namespace: "near",
+              homeLink,
               entityType: "modelProvider",
               schemaFile: "${REPL_ACCOUNT}/widget/AI.Schema.Provider",
             }}
@@ -115,6 +132,7 @@ const schema = {
             src="${REPL_ACCOUNT}/widget/Entities.Template.GenericEntityConfig"
             props={{
               namespace: "near",
+              homeLink,
               entityType: "modelName",
               title: "Standard Model Names",
               schemaFile: "${REPL_ACCOUNT}/widget/AI.Schema.ModelName",
@@ -131,6 +149,7 @@ const schema = {
             src="${REPL_ACCOUNT}/widget/Entities.Template.GenericEntityConfig"
             props={{
               namespace: "near",
+              homeLink,
               entityType: "model",
               title: "Model Weights",
             }}
@@ -159,7 +178,11 @@ const schema = {
         content: (
           <Widget
             src="${REPL_ACCOUNT}/widget/Entities.Template.GenericEntityConfig"
-            props={{ namespace: "near", entityType: "agentFramework" }}
+            props={{
+              namespace: "near",
+              homeLink,
+              entityType: "agentFramework",
+            }}
           />
         ),
         icon: "ph ph-chart-bar-horizontal",
@@ -170,7 +193,7 @@ const schema = {
         content: (
           <Widget
             src="${REPL_ACCOUNT}/widget/Entities.Template.GenericEntityConfig"
-            props={{ namespace: "near", entityType: "agentModule" }}
+            props={{ namespace: "near", homeLink, entityType: "agentModule" }}
           />
         ),
         icon: "ph ph-chart-bar-horizontal",
@@ -183,6 +206,7 @@ const schema = {
             src="${REPL_ACCOUNT}/widget/Entities.Template.GenericEntityConfig"
             props={{
               namespace: "near",
+              homeLink,
               entityType: "customUI",
               title: "Custom User Interfaces",
             }}
@@ -205,6 +229,7 @@ const schema = {
             src="${REPL_ACCOUNT}/widget/Entities.Template.GenericEntityConfig"
             props={{
               namespace: "near",
+              homeLink,
               entityType: "contractTool",
               title: "On-Chain Contracts",
             }}
@@ -220,6 +245,7 @@ const schema = {
             src="${REPL_ACCOUNT}/widget/Entities.Template.GenericEntityConfig"
             props={{
               namespace: "near",
+              homeLink,
               entityType: "apiTool",
               title: "API Tools",
             }}
@@ -240,7 +266,7 @@ const schema = {
         content: (
           <Widget
             src="${REPL_ACCOUNT}/widget/Entities.Template.GenericEntityConfig"
-            props={{ namespace: "near", entityType: "dataSource" }}
+            props={{ namespace: "near", homeLink, entityType: "dataSource" }}
           />
         ),
         icon: "ph ph-chart-bar-horizontal",
@@ -251,7 +277,11 @@ const schema = {
         content: (
           <Widget
             src="${REPL_ACCOUNT}/widget/Entities.Template.GenericEntityConfig"
-            props={{ namespace: "near", entityType: "dataSourceType" }}
+            props={{
+              namespace: "near",
+              homeLink,
+              entityType: "dataSourceType",
+            }}
           />
         ),
         icon: "ph ph-chart-bar-horizontal",
@@ -264,6 +294,7 @@ const schema = {
             src="${REPL_ACCOUNT}/widget/Entities.Template.GenericEntityConfig"
             props={{
               namespace: "near",
+              homeLink,
               entityType: "delegation",
               title: "Permissions you can Delegate",
             }}
@@ -284,7 +315,11 @@ const schema = {
         content: (
           <Widget
             src="${REPL_ACCOUNT}/widget/Entities.Template.GenericEntityConfig"
-            props={{ namespace: "near", entityType: "dataReputation" }}
+            props={{
+              namespace: "near",
+              homeLink,
+              entityType: "dataReputation",
+            }}
           />
         ),
         icon: "ph ph-chart-bar-horizontal",
@@ -295,7 +330,11 @@ const schema = {
         content: (
           <Widget
             src="${REPL_ACCOUNT}/widget/Entities.Template.GenericEntityConfig"
-            props={{ namespace: "near", entityType: "agentReputation" }}
+            props={{
+              namespace: "near",
+              homeLink,
+              entityType: "agentReputation",
+            }}
           />
         ),
         icon: "ph ph-chart-bar-horizontal",
@@ -308,6 +347,7 @@ const schema = {
             src="${REPL_ACCOUNT}/widget/Entities.Template.GenericEntityConfig"
             props={{
               namespace: "near",
+              homeLink,
               entityType: "proof",
               title: "Compliance Proofs",
             }}

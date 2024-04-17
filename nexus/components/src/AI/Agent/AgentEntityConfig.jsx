@@ -31,6 +31,7 @@ return (
       title: "Agent",
       schemaFile: "${REPL_ACCOUNT}/widget/AI.Schema.Agent",
       renderItem,
+      homeLink: "${REPL_ACCOUNT}/widget/AI.Nexus",
     }}
   />
 );

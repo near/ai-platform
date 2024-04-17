@@ -553,8 +553,11 @@ return (
           />
         </Grid>
         <Text style={{ overflow: "visible" }}>
-          <p>Here at the NEAR AI Nexus you can find AI projects from across the NEAR ecosystem
-            then compose them into new combinations. Sign in to add or fork any of the existing resource types.</p>
+          <p>
+            Here at the NEAR AI Nexus you can find AI projects from across the
+            NEAR ecosystem then compose them into new combinations. Sign in to
+            add or fork any of the existing resource types.
+          </p>
           <p>
             If you need more, this UI is composed of React-on-Chain components
             as is the schema for each type of resource. You can add new fields

@@ -19,7 +19,7 @@ const genSchema = (ignored) => {
         required: false,
       },
       label: "Is proprietary",
-      order: 6,
+      order: 10,
     },
     // we can have both!
     //     relationships: [
