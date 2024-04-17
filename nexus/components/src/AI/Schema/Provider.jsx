@@ -40,7 +40,7 @@ const genSchema = (ignored) => {
         required: false,
       },
       label: "Category",
-      order: 6,
+      order: 10,
     },
   };
 };

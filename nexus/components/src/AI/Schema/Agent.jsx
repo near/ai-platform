@@ -20,7 +20,7 @@ const genSchema = (ignored) => {
       },
       multiline: true,
       label: "Prompt",
-      order: 3,
+      order: 10,
     },
     component: {
       type: "string",
@@ -32,7 +32,7 @@ const genSchema = (ignored) => {
         required: false,
       },
       label: "Component",
-      order: 4,
+      order: 11,
     },
     // preferredProvider: {
     //     inputProps: {
