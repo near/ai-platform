@@ -18,6 +18,7 @@ const renderItem = (item, editFunction) => {
         namespace: "near",
         entityType: "agent",
         schemaFile: "${REPL_ACCOUNT}/widget/AI.Schema.Agent",
+        returnTo: "${REPL_ACCOUNT}/widget/AI.Nexus",
       }}
     />
   );
