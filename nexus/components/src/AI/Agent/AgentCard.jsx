@@ -4,7 +4,7 @@ if (!href) {
   return <></>;
 }
 
-const { namespace, entityType, schemaFile } = props;
+const { namespace, entityType, schemaFile, returnTo } = props;
 
 const Card = styled.div`
   cursor: pointer;
@@ -48,6 +48,9 @@ const Card = styled.div`
     font-weight: 400;
   }
 `;
+const TagsWrapper = styled.div`
+  padding: 4px;
+`;
 const CardText = styled.div``;
 const Prompt = styled.span`
   color: grey;
@@ -62,7 +65,7 @@ const Actions = styled.div`
   gap: 2px;
 `;
 const AgentCard = ({ item, editFunction }) => {
-  const { accountId, name, displayName, prompt, logoUrl } = item;
+  const { accountId, name, displayName, prompt, logoUrl, tags } = item;
   const agentComponent = item.component
     ? item.component
     : `${REPL_ACCOUNT}/widget/AI.Agent.AgentChat`;
@@ -80,6 +83,7 @@ const AgentCard = ({ item, editFunction }) => {
       schemaFile,
       namespace,
       entityType,
+      returnTo,
     },
   });
 
@@ -95,6 +99,16 @@ const AgentCard = ({ item, editFunction }) => {
         <div className="row">
           <div className="col-4">
             <img className="logo" src={imageUrl} alt="agent logo" />
+          {tags && tags.length > 0 && (
+              <TagsWrapper>
+                  <Widget
+                      src="${REPL_ACCOUNT}/widget/Tags"
+                      props={{
+                          tags,
+                      }}
+                  />
+              </TagsWrapper>
+          )}
           </div>
 
           <CardText className="col">
