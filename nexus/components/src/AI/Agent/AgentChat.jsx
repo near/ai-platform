@@ -1,4 +1,8 @@
 const { href } = VM.require("${REPL_DEVHUB}/widget/core.lib.url");
+const { loadItem, convertObjectKeysSnakeToPascal } = VM.require(
+  "${REPL_ACCOUNT}/widget/Entities.QueryApi.Client",
+);
+
 const storedModel = Storage.get("agent-model");
 const storedLocalModel = Storage.get("agent-local-model");
 const storedCredentialType = Storage.get("agent-credential-type");
@@ -9,20 +13,62 @@ if (
   storedCredential === null ||
   storedModel === null ||
   storedLocalModel === null ||
-  storedCredentialType === null
+  storedCredentialType === null ||
+  loadItem === null
 ) {
   return "Loading config...";
 }
 
 const { src, embedded } = props;
-
 const [accountId, agentType, agentName] = src.split("/") ?? [null, null, null];
-const blockHeight = blockHeight ?? "final";
 
-const data = Social.getr(`${accountId}/agent/${agentName}`, blockHeight);
-const agent = { accountId, name: agentName, ...data };
+const namespace = "near";
+const entityType = "agent";
+const entityIndexer = "entities";
+const entityTable = "entities";
+const user = "dataplatform_near";
+const collection = `${user}_${entityIndexer}_${entityTable}`;
 
-if (!data) return "Loading...";
+const query = `
+query SingleEntity {
+    ${collection}(
+          where: { account_id: {_eq: "${accountId}"}, name: {_eq: "${agentName}"}, 
+                   entity_type: {_eq: "${entityType}"}, namespace: {_eq: "${namespace}"}}
+        ) {
+        entity_type
+        namespace
+        id
+        account_id
+        name
+        display_name
+        logo_url
+        attributes
+        stars
+        tags
+        created_at
+        updated_at
+        }
+    }
+`;
+
+const [agent, setAgent] = useState(null);
+const [error, setError] = useState(null);
+const onLoad = (itemInArray) => {
+  if (itemInArray.length === 0 || !itemInArray[0]) {
+    setError(`${entityType} with name ${agentName} not found`);
+    return;
+  }
+  const fetchedItem = itemInArray[0];
+  const fullEntity = convertObjectKeysSnakeToPascal({
+    ...fetchedItem,
+    ...fetchedItem.attributes,
+  });
+  delete fullEntity.attributes;
+  setAgent({ accountId, name: agentName, ...fullEntity });
+};
+loadItem(query, "SingleEntity", collection, onLoad);
+
+if (!agent) return "Loading agent...";
 
 const listLink = href({
   widgetSrc: `${REPL_ACCOUNT}/widget/AI.Nexus`,
@@ -96,7 +142,7 @@ const nearLlama = async (question) => {
       "Content-Type": "application/json",
     },
     responseType: "json",
-    body: JSON.stringify([{ role: "system", content: data.prompt }, question]),
+    body: JSON.stringify([{ role: "system", content: agent.prompt }, question]),
   }).then((response) => {
     return response.body.response;
   });
@@ -137,7 +183,7 @@ const openAICompatible = async (question) => {
     responseType: "json",
     body: JSON.stringify({
       ...options,
-      messages: [{ role: "system", content: data.prompt }, ...messages],
+      messages: [{ role: "system", content: agent.prompt }, ...messages],
     }),
   }).then((response) => {
     const answer = response.body.choices[0].message.content;
@@ -401,13 +447,13 @@ return (
                   props={{
                     size: "small",
                     showTags: true,
-                    agent: agent,
+                    entity: agent,
                   }}
                 />
               </div>
               <div className="col-7">
                 <Prompt>
-                  <Label>Prompt:</Label> {data.prompt}
+                  <Label>Prompt:</Label> {agent.prompt}
                 </Prompt>
               </div>
             </div>
