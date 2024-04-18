@@ -99,16 +99,16 @@ const AgentCard = ({ item, editFunction }) => {
         <div className="row">
           <div className="col-4">
             <img className="logo" src={imageUrl} alt="agent logo" />
-          {tags && tags.length > 0 && (
+            {tags && tags.length > 0 && (
               <TagsWrapper>
-                  <Widget
-                      src="${REPL_ACCOUNT}/widget/Tags"
-                      props={{
-                          tags,
-                      }}
-                  />
+                <Widget
+                  src="${REPL_ACCOUNT}/widget/Tags"
+                  props={{
+                    tags,
+                  }}
+                />
               </TagsWrapper>
-          )}
+            )}
           </div>
 
           <CardText className="col">
