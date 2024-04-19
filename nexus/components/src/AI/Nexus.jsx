@@ -30,9 +30,12 @@ useEffect(() => {
 
 const [activeTabs, setActiveTabs] = useState(
   storedTabs || {
-    datasets: "alignment",
-    models: "providers",
-    agents: "agents",
+    datasets: "alignmentDataset",
+    models: "modelProvider",
+    agents: "agent",
+    agentTools: "contractTool",
+    dataSources: "dataSource",
+    verifications: "dataReputation",
   },
 );
 
@@ -51,6 +54,8 @@ if (!paramsHandled && props.group && props.group !== activeGroup) {
     setActiveTabs(newTabs);
   }
 }
+
+const [globalTagFilter, setGlobalTagFilter] = useState(null);
 
 const content = {
   overview: () => {
@@ -98,7 +103,11 @@ const renderContent = () => {
     case "dashboard":
       return content.dashboard();
     default:
-      return content.subGroups(activeGroup, schema[activeGroup]);
+      return content.subGroups(
+        activeGroup,
+        schema[activeGroup],
+        globalTagFilter, // forces re-render, gets passed through Storage
+      );
   }
 };
 
@@ -119,6 +128,32 @@ const sidebarItems = (schema) => {
   });
 };
 
+const findEntityInSchema = (schema, entityType) => {
+  for (const [category, group] of Object.entries(schema)) {
+    if (!group.items) continue;
+    for (const item of group.items) {
+      if (item.value === entityType) {
+        return [category, item.value];
+      }
+    }
+  }
+  return [null, null];
+};
+
+const handleTagClick = (tag) => {
+  const entityType = tag.entityType ?? tag.entity_type;
+  const [category, subType] = findEntityInSchema(schema, entityType);
+  if (!category || !subType) {
+    console.error(`Entity type ${entityType} not found in schema`);
+    return;
+  }
+  Storage.set("global-tag-filter", [tag.tag]);
+  setGlobalTagFilter([tag.tag]);
+  setActiveTabs((prev) => {
+    return { ...prev, [category]: subType };
+  });
+  handleMenuClick(category);
+};
 return (
   <div className="gateway-page-container">
     <div className="d-flex flex-column gap-5">
@@ -129,6 +164,12 @@ return (
             title: "NEAR AI",
             activeTab: activeGroup,
             items: sidebarItems(schema),
+            additionalContent: (
+              <Widget
+                src="${REPL_ACCOUNT}/widget/Entities.Template.Forms.TagCloud"
+                props={{ namespace: "near", onSelect: handleTagClick }}
+              />
+            ),
           }}
         />
         {renderContent()}
