@@ -21,11 +21,11 @@ const schema = {
   datasets: {
     title: "Datasets",
     icon: "ph ph-list-checks",
-    defaultValue: "alignment",
+    defaultValue: "alignmentDataset",
     items: [
       {
         name: "Crowdsourcing",
-        value: "crowdsourcing",
+        value: "crowdsourcedDataset",
         content: (
           <Widget
             src="${REPL_ACCOUNT}/widget/Entities.Template.GenericEntityConfig"
@@ -55,7 +55,7 @@ const schema = {
       },
       {
         name: "Foundation",
-        value: "foundation",
+        value: "foundationDataset",
         content: (
           <Widget
             src="${REPL_ACCOUNT}/widget/Entities.Template.GenericEntityConfig"
@@ -70,7 +70,7 @@ const schema = {
       },
       {
         name: "Supervised Fine Tuning",
-        value: "fineTuning",
+        value: "fineTuningDataset",
         content: (
           <Widget
             src="${REPL_ACCOUNT}/widget/Entities.Template.GenericEntityConfig"
@@ -86,7 +86,7 @@ const schema = {
       },
       {
         name: "Alignment",
-        value: "alignment",
+        value: "alignmentDataset",
         content: (
           <Widget
             src="${REPL_ACCOUNT}/widget/Entities.Template.GenericEntityConfig"
@@ -106,11 +106,11 @@ const schema = {
   models: {
     title: "Models & Providers",
     icon: "ph ph-list-checks",
-    defaultValue: "providers",
+    defaultValue: "modelProvider",
     items: [
       {
         name: "Providers",
-        value: "providers",
+        value: "modelProvider",
         content: (
           <Widget
             src="${REPL_ACCOUNT}/widget/Entities.Template.GenericEntityConfig"
@@ -126,7 +126,7 @@ const schema = {
       },
       {
         name: "Standard Model Names",
-        value: "modelNames",
+        value: "modelName",
         content: (
           <Widget
             src="${REPL_ACCOUNT}/widget/Entities.Template.GenericEntityConfig"
@@ -143,7 +143,7 @@ const schema = {
       },
       {
         name: "Model Weights",
-        value: "models",
+        value: "model",
         content: (
           <Widget
             src="${REPL_ACCOUNT}/widget/Entities.Template.GenericEntityConfig"
@@ -162,11 +162,11 @@ const schema = {
   agents: {
     title: "Agents",
     icon: "ph ph-list-checks",
-    defaultValue: "agents",
+    defaultValue: "agent",
     items: [
       {
         name: "Agents",
-        value: "agents",
+        value: "agent",
         content: (
           <Widget src="${REPL_ACCOUNT}/widget/AI.Agent.AgentEntityConfig" />
         ),
@@ -174,7 +174,7 @@ const schema = {
       },
       {
         name: "Frameworks",
-        value: "frameworks",
+        value: "agentFramework",
         content: (
           <Widget
             src="${REPL_ACCOUNT}/widget/Entities.Template.GenericEntityConfig"
@@ -189,7 +189,7 @@ const schema = {
       },
       {
         name: "Modules",
-        value: "modules",
+        value: "agentModule",
         content: (
           <Widget
             src="${REPL_ACCOUNT}/widget/Entities.Template.GenericEntityConfig"
@@ -200,14 +200,14 @@ const schema = {
       },
       {
         name: "User Interfaces",
-        value: "uis",
+        value: "agentUserInterface",
         content: (
           <Widget
             src="${REPL_ACCOUNT}/widget/Entities.Template.GenericEntityConfig"
             props={{
               namespace: "near",
               homeLink,
-              entityType: "customUI",
+              entityType: "agentUserInterface",
               title: "Custom User Interfaces",
             }}
           />
@@ -219,11 +219,11 @@ const schema = {
   agentTools: {
     title: "Tools for Agents",
     icon: "ph ph-list-checks",
-    defaultValue: "contracts",
+    defaultValue: "contractTool",
     items: [
       {
         name: "On-chain Contracts",
-        value: "contracts",
+        value: "contractTool",
         content: (
           <Widget
             src="${REPL_ACCOUNT}/widget/Entities.Template.GenericEntityConfig"
@@ -239,7 +239,7 @@ const schema = {
       },
       {
         name: "APIs",
-        value: "apis",
+        value: "apiTool",
         content: (
           <Widget
             src="${REPL_ACCOUNT}/widget/Entities.Template.GenericEntityConfig"
@@ -258,7 +258,7 @@ const schema = {
   datasources: {
     title: "Data Sources",
     icon: "ph ph-list-checks",
-    defaultValue: "privateDataSource",
+    defaultValue: "dataSource",
     items: [
       {
         name: "Data Sources",
@@ -304,10 +304,10 @@ const schema = {
       },
     ],
   },
-  verification: {
+  verifications: {
     title: "Verifications",
     icon: "ph ph-list-checks",
-    defaultValue: "privateDataSource",
+    defaultValue: "dataReputation",
     items: [
       {
         name: "Data Reputation",
