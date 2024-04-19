@@ -1,4 +1,4 @@
-let { src, tab, schemaFile, namespace, returnTo } = props;
+let { src, tab, schemaFile, namespace, entityType, returnTo } = props;
 
 const summaryComponent = "${REPL_ACCOUNT}/widget/AI.Agent.AgentSummary";
 const customComponentLabel = (component) => {
@@ -37,6 +37,7 @@ return (
       tab,
       schemaFile,
       namespace,
+      entityType,
       summaryComponent,
       additionalTabs,
       returnTo,

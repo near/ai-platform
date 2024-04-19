@@ -64,6 +64,45 @@ const Actions = styled.div`
   align-items: center;
   gap: 2px;
 `;
+const sharedButtonStyles = `
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 8px;
+  height: 32px;
+  border-radius: 50px;
+  font-weight: 600;
+  font-size: 12px;
+  line-height: 15px;
+  text-align: center;
+  cursor: pointer;
+
+  &:hover,
+  &:focus {
+    text-decoration: none;
+    outline: none;
+  }
+
+  i {
+    color: #7E868C;
+  }
+
+  .bi-16 {
+    font-size: 16px;
+  }
+`;
+const Button = styled.button`
+  ${sharedButtonStyles}
+  color: ${(p) => (p.primary ? "#09342E" : "#11181C")} !important;
+  background: ${(p) => (p.primary ? "#59E692" : "#FBFCFD")};
+  border: ${(p) => "none"};
+
+  &:hover,
+  &:focus {
+    background: ${(p) => (p.primary ? "rgb(112 242 164)" : "#ECEDEE")};
+  }
+`;
+
 const AgentCard = ({ item, editFunction }) => {
   const { accountId, name, displayName, prompt, logoUrl, tags } = item;
   const agentComponent = item.component
@@ -145,6 +184,35 @@ const AgentCard = ({ item, editFunction }) => {
             ),
           }}
         />
+        <Widget
+          src="${REPL_ACCOUNT}/widget/SocialIndexActionButton"
+          props={{
+            actionName: "star",
+            actionUndoName: "unstar",
+            item: {
+              type: "social",
+              path: `${accountId}/entities/${namespace}/${entityType}/${name}`,
+            },
+            notifyAccountId: accountId,
+            button: (starCount, starIsActive, starOnClick) => (
+              <Button
+                type="button"
+                onClick={starOnClick}
+                aria-label="Star this"
+              >
+                {starIsActive ? (
+                  <i
+                    className="bi bi-star-fill"
+                    style={{ color: "var(--amber10)" }}
+                  />
+                ) : (
+                  <i className="bi bi-star" />
+                )}{" "}
+                {item.stars}
+              </Button>
+            ),
+          }}
+        />{" "}
         <Widget
           src="${REPL_ACCOUNT}/widget/CopyUrlButton"
           props={{
