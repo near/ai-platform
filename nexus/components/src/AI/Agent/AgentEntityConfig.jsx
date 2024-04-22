@@ -27,12 +27,14 @@ return (
   <Widget
     src="${REPL_ACCOUNT}/widget/Entities.Template.GenericEntityConfig"
     props={{
-      namespace: "near",
+      namespace: props.namespace,
       entityType: "agent",
       title: "Agent",
       schemaFile: "${REPL_ACCOUNT}/widget/AI.Schema.Agent",
       renderItem,
-      homeLink: "${REPL_ACCOUNT}/widget/AI.Nexus",
+      homeLink: props.homeLink,
+      globalTagFilter: props.globalTagFilter,
+      setGlobalTagFilter: props.setGlobalTagFilter,
     }}
   />
 );

@@ -67,6 +67,12 @@ const content = {
     );
   },
   subGroups: (groupName, group) => {
+    const contentProps = {
+      namespace: "near",
+      homeLink: "${REPL_ACCOUNT}/widget/AI.Nexus",
+      globalTagFilter,
+      setGlobalTagFilter: (value) => setGlobalTagFilter(value),
+    };
     return (
       <div>
         <h4 style={{ textAlign: "left" }}>{group.title}</h4>
@@ -81,11 +87,13 @@ const content = {
               group.defaultValue ||
               group.items[0].value,
             onValueChange: (value) => {
+              setGlobalTagFilter(null);
               const newTabs = { ...activeTabs };
               newTabs[groupName] = value;
               setActiveTabs(newTabs);
             },
             items: group.items,
+            contentProps,
           }}
         />
       </div>
@@ -112,6 +120,7 @@ const renderContent = () => {
 };
 
 const handleMenuClick = (value) => {
+  setGlobalTagFilter(null);
   setActiveGroup(value);
 };
 
@@ -148,11 +157,11 @@ const handleTagClick = (tag) => {
     return;
   }
   Storage.set("global-tag-filter", [tag.tag]);
-  setGlobalTagFilter([tag.tag]);
+  setGlobalTagFilter([tag]);
   setActiveTabs((prev) => {
     return { ...prev, [category]: subType };
   });
-  handleMenuClick(category);
+  setActiveGroup(category);
 };
 return (
   <div className="gateway-page-container">
@@ -167,7 +176,11 @@ return (
             additionalContent: (
               <Widget
                 src="${REPL_ACCOUNT}/widget/Entities.Template.Forms.TagCloud"
-                props={{ namespace: "near", onSelect: handleTagClick }}
+                props={{
+                  namespace: "near",
+                  onSelect: handleTagClick,
+                  initialTags: globalTagFilter,
+                }}
               />
             ),
           }}
