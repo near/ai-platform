@@ -4,7 +4,7 @@ if (!href) {
   return <></>;
 }
 
-const { entity, showActions } = props;
+const { entity, showActions, namespace, entityType } = props;
 const { accountId, name, displayName, prompt, logoUrl, tags, component } =
   entity;
 
@@ -229,14 +229,14 @@ return (
             actionUndoName: "unstar",
             item: {
               type: "social",
-              path: `${accountId}/agent/${name}`,
+              path: `${accountId}/entities/${namespace}/${entityType}/${name}`,
             },
             notifyAccountId: accountId,
             button: (starCount, starIsActive, starOnClick) => (
               <Button
                 type="button"
                 onClick={starOnClick}
-                aria-label="Star this agent"
+                aria-label="Star this"
               >
                 {starIsActive ? (
                   <i
@@ -246,7 +246,7 @@ return (
                 ) : (
                   <i className="bi bi-star" />
                 )}{" "}
-                {starCount}
+                {entity.stars}
               </Button>
             ),
           }}
