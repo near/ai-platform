@@ -34,7 +34,7 @@ const schema = {
             }}
           />
         ),
-        icon: "ph ph-chart-bar-horizontal",
+        icon: "ph ph-users-four",
       },
       {
         name: "Data marketplace",
@@ -48,7 +48,7 @@ const schema = {
             }}
           />
         ),
-        icon: "ph ph-chart-bar-horizontal",
+        icon: "ph ph-basket",
       },
       {
         name: "Training Datasets",
@@ -68,7 +68,7 @@ const schema = {
   },
   models: {
     title: "Models & Providers",
-    icon: "ph ph-list-checks",
+    icon: "ph ph-graph",
     defaultValue: "modelProvider",
     items: [
       {
@@ -84,7 +84,7 @@ const schema = {
             }}
           />
         ),
-        icon: "ph ph-chart-bar-horizontal",
+        icon: "ph ph-cpu",
       },
       {
         name: "Standard Model Names",
@@ -100,7 +100,7 @@ const schema = {
             }}
           />
         ),
-        icon: "ph ph-chart-bar-horizontal",
+        icon: "ph ph-identification-card",
       },
       {
         name: "Model Weights",
@@ -115,13 +115,13 @@ const schema = {
             }}
           />
         ),
-        icon: "ph ph-chart-bar-horizontal",
+        icon: "ph ph-files",
       },
     ],
   },
   agents: {
     title: "Agents",
-    icon: "ph ph-list-checks",
+    icon: "ph ph-user-circle-gear",
     defaultValue: "agent",
     items: [
       {
@@ -136,7 +136,7 @@ const schema = {
             }}
           />
         ),
-        icon: "ph ph-address-book",
+        icon: "ph ph-user-circle-gear",
       },
       {
         name: "Frameworks",
@@ -150,7 +150,7 @@ const schema = {
             }}
           />
         ),
-        icon: "ph ph-chart-bar-horizontal",
+        icon: "ph ph-factory", // ph-blueprint after upgrade to 2.1.0
       },
       {
         name: "Modules",
@@ -164,7 +164,7 @@ const schema = {
             }}
           />
         ),
-        icon: "ph ph-chart-bar-horizontal",
+        icon: "ph ph-puzzle-piece",
       },
       {
         name: "User Interfaces",
@@ -179,13 +179,13 @@ const schema = {
             }}
           />
         ),
-        icon: "ph ph-chart-bar-horizontal",
+        icon: "ph ph-layout",
       },
     ],
   },
   agentTools: {
     title: "Tools for Agents",
-    icon: "ph ph-list-checks",
+    icon: "ph ph-toolbox",
     defaultValue: "contractTool",
     items: [
       {
@@ -201,7 +201,7 @@ const schema = {
             }}
           />
         ),
-        icon: "ph ph-address-book",
+        icon: "ph ph-link",
       },
       {
         name: "APIs",
@@ -216,13 +216,13 @@ const schema = {
             }}
           />
         ),
-        icon: "ph ph-chart-bar-horizontal",
+        icon: "ph ph-computer-tower", // ph-network after 2.1.0 upgrade
       },
     ],
   },
   datasources: {
     title: "Data Sources",
-    icon: "ph ph-list-checks",
+    icon: "ph ph-tree-structure",
     defaultValue: "dataSource",
     items: [
       {
@@ -237,7 +237,7 @@ const schema = {
             }}
           />
         ),
-        icon: "ph ph-chart-bar-horizontal",
+        icon: "ph ph-database",
       },
       {
         name: "Data Source Types",
@@ -251,7 +251,7 @@ const schema = {
             }}
           />
         ),
-        icon: "ph ph-chart-bar-horizontal",
+        icon: "ph ph-hard-drives",
       },
       {
         name: "Delegated Permissions",
@@ -266,13 +266,13 @@ const schema = {
             }}
           />
         ),
-        icon: "ph ph-chart-bar-horizontal",
+        icon: "ph ph-fingerprint",
       },
     ],
   },
   verifications: {
     title: "Verifications",
-    icon: "ph ph-list-checks",
+    icon: "ph ph-seal-check",
     defaultValue: "dataReputation",
     items: [
       {
@@ -287,7 +287,7 @@ const schema = {
             }}
           />
         ),
-        icon: "ph ph-chart-bar-horizontal",
+        icon: "ph ph-seal-question", // ph-seal-percent after 2.1.0 upgrade
       },
       {
         name: "Agent Reputation",
@@ -301,7 +301,7 @@ const schema = {
             }}
           />
         ),
-        icon: "ph ph-chart-bar-horizontal",
+        icon: "ph ph-crown-simple", //  ph-ranking after 2.1.0 upgrade
       },
       {
         name: "Compliance Proofs",
@@ -316,7 +316,7 @@ const schema = {
             }}
           />
         ),
-        icon: "ph ph-chart-bar-horizontal",
+        icon: "ph ph-lock-laminated",
       },
     ],
   },
