@@ -51,44 +51,13 @@ const schema = {
         icon: "ph ph-chart-bar-horizontal",
       },
       {
-        name: "Foundation",
-        value: "foundationDataset",
+        name: "Training Datasets",
+        value: "trainingDataset",
         content: (contentProps) => (
           <Widget
             src="${REPL_ACCOUNT}/widget/Entities.Template.GenericEntityConfig"
             props={{
-              entityType: "foundationDataset",
-              ...contentProps,
-            }}
-          />
-        ),
-        icon: "ph ph-chart-bar-horizontal",
-      },
-      {
-        name: "Supervised Fine Tuning",
-        value: "fineTuningDataset",
-        content: (contentProps) => (
-          <Widget
-            src="${REPL_ACCOUNT}/widget/Entities.Template.GenericEntityConfig"
-            props={{
-              entityType: "fineTuningDataset",
-              title: "Supervised Fine Tuning Datasets",
-              ...contentProps,
-            }}
-          />
-        ),
-        icon: "ph ph-chart-bar-horizontal",
-      },
-      {
-        name: "Alignment",
-        value: "alignmentDataset",
-        content: (contentProps) => (
-          <Widget
-            src="${REPL_ACCOUNT}/widget/Entities.Template.GenericEntityConfig"
-            props={{
-              entityType: "alignmentDataset",
-              title: "Alignment Datasets: RLHF, DPO",
-              schemaFile: "${REPL_ACCOUNT}/widget/AI.Schema.AlignmentDataset",
+              entityType: "trainingDataset",
               ...contentProps,
             }}
           />
