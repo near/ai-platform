@@ -540,19 +540,17 @@ return (
       >
         <Grid $gap="20px" $columns="1fr 1fr">
           <TrendingApp
-            href="https://github.com/near/ai-platform/tree/develop/nexus/components/src/AI/Schema"
-            url="https://near.org/_next/static/media/near-icon.2e682d59.svg"
-            name="ai-platform"
-            loading={false}
+              href="https://github.com/near/ai-platform/tree/develop/nexus/components/src/AI/Schema"
+              url="https://near.org/_next/static/media/near-icon.2e682d59.svg"
+              name="ai-platform"
+              loading={false}
           />
           <TrendingApp
-            href="https://github.com/near/near-discovery-components/tree/develop/src/Entities/Template"
-            url="https://near.org/_next/static/media/near-icon.2e682d59.svg"
-            name="entity-components"
-            loading={false}
+              href="https://github.com/near/near-discovery-components/tree/develop/src/Entities/Template"
+              url="https://near.org/_next/static/media/near-icon.2e682d59.svg"
+              name="entity-components"
+              loading={false}
           />
-        </Grid>
-        <Text style={{ overflow: "visible" }}>
           <p>
             Here at the NEAR AI Nexus you can find AI projects from across the
             NEAR ecosystem then compose them into new combinations. Sign in to
@@ -563,7 +561,7 @@ return (
             as is the schema for each type of resource. You can add new fields
             to resources and add whole new types of resources.
           </p>
-        </Text>
+        </Grid>
       </Card>
     </Section>
   </Wrapper>

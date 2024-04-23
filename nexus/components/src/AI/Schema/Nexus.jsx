@@ -35,6 +35,7 @@ const schema = {
           />
         ),
         icon: "ph ph-users-four",
+        disabled: true,
       },
       {
         name: "Data marketplace",
@@ -49,6 +50,7 @@ const schema = {
           />
         ),
         icon: "ph ph-basket",
+        disabled: true,
       },
       {
         name: "Training Datasets",
@@ -267,6 +269,7 @@ const schema = {
           />
         ),
         icon: "ph ph-fingerprint",
+        disabled: true,
       },
     ],
   },
@@ -317,6 +320,7 @@ const schema = {
           />
         ),
         icon: "ph ph-lock-laminated",
+        disabled: true,
       },
     ],
   },
