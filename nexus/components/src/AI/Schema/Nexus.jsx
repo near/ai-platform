@@ -60,6 +60,7 @@ const schema = {
             src="${REPL_ACCOUNT}/widget/Entities.Template.GenericEntityConfig"
             props={{
               entityType: "trainingDataset",
+              schemaFile: "${REPL_ACCOUNT}/widget/AI.Schema.TrainingDataset",
               ...contentProps,
             }}
           />
