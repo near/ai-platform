@@ -538,29 +538,36 @@ return (
         title="Contribute to the NEAR AI Nexus"
         text={<>This directory is all on-chain.</>}
       >
-        <Grid $gap="20px" $columns="1fr 1fr">
-          <TrendingApp
-              href="https://github.com/near/ai-platform/tree/develop/nexus/components/src/AI/Schema"
-              url="https://near.org/_next/static/media/near-icon.2e682d59.svg"
-              name="ai-platform"
-              loading={false}
-          />
-          <TrendingApp
-              href="https://github.com/near/near-discovery-components/tree/develop/src/Entities/Template"
-              url="https://near.org/_next/static/media/near-icon.2e682d59.svg"
-              name="entity-components"
-              loading={false}
-          />
+        <Grid $gap="20px" $columns="1fr">
           <p>
             Here at the NEAR AI Nexus you can find AI projects from across the
             NEAR ecosystem then compose them into new combinations. Sign in to
-            add or fork any of the existing resource types.
+            add or fork any of the existing resource types. It's easy to upload
+            Datasets, Models, Agent Frameworks, and more.
           </p>
           <p>
             If you need more, this UI is composed of React-on-Chain components
             as is the schema for each type of resource. You can add new fields
-            to resources and add whole new types of resources.
+            to resources and add new types of resources. To do so, open a PR on
+            ai-platform.
           </p>
+          <TrendingApp
+            href="https://github.com/near/ai-platform/tree/develop/nexus/components/src/AI/Schema"
+            url="https://near.org/_next/static/media/near-icon.2e682d59.svg"
+            name="ai-platform"
+            loading={false}
+          />
+          <p>
+            If you'd like to build a similar UI for your own project, you can
+            use the same Entity Framework of React-on-Chain components to launch
+            a production site in under a minute.
+          </p>
+          <TrendingApp
+            href="https://github.com/near/near-discovery-components/tree/develop/src/Entities/Examples"
+            url="https://near.org/_next/static/media/near-icon.2e682d59.svg"
+            name="entity-components"
+            loading={false}
+          />
         </Grid>
       </Card>
     </Section>

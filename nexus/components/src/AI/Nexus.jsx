@@ -30,7 +30,7 @@ useEffect(() => {
 
 const [activeTabs, setActiveTabs] = useState(
   storedTabs || {
-    datasets: "alignmentDataset",
+    datasets: "trainingDataset",
     models: "modelProvider",
     agents: "agent",
     agentTools: "contractTool",
