@@ -4,21 +4,21 @@ const { genSchema: genericGenSchema } = VM.require(
 
 const genSchema = (ignored) => {
   const namespace = "near";
-  const entityType = "alignmentDataset";
-  const entityTitle = "Alignment Dataset";
+  const entityType = "trainingDataset";
+  const entityTitle = "Training Dataset";
 
   const genericSchema = genericGenSchema(namespace, entityType, entityTitle);
   return {
     ...genericSchema,
-    languages: {
+    code: {
       type: "string",
       inputProps: {
         min: 0,
-        max: 1024,
-        placeholder: `Languages in the dataset.`,
+        max: 2048,
+        placeholder: `https://github.com/... or other repository url`,
         required: false,
       },
-      label: "Languages",
+      label: "Repository url",
       order: 10,
     },
   };

@@ -2,9 +2,7 @@ const { genSchema: genericGenSchema } = VM.require(
   "${REPL_ACCOUNT}/widget/Entities.Template.GenericSchema",
 );
 
-const genSchema = (ignored) => {
-  const namespace = "near";
-  const entityType = "agent";
+const genSchema = (namespace, entityType, title) => {
   const entityTitle = "Agent";
 
   const genericSchema = genericGenSchema(namespace, entityType, entityTitle);

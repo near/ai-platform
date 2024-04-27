@@ -1,3 +1,5 @@
+// define apiSchema and credential types
+
 const apiSchema = {
   chat: {
     type: "string",
@@ -23,23 +25,21 @@ const { genSchema: genericGenSchema } = VM.require(
   "${REPL_ACCOUNT}/widget/Entities.Template.GenericSchema",
 );
 
-const genSchema = (ignored) => {
-  const namespace = "near";
-  const entityType = "provider";
-  const entityTitle = "Provider";
+const genSchema = (namespace, entityType, title) => {
+  const entityTitle = title ?? "Provider";
 
   const genericSchema = genericGenSchema(namespace, entityType, entityTitle);
   return {
     ...genericSchema,
-    category: {
+    documentationUrl: {
       type: "string",
       inputProps: {
         min: 4,
         max: 255,
-        placeholder: `Category: Compute marketplace, Provable training, Distributed training, Provable Inference`,
+        placeholder: `https://...`,
         required: false,
       },
-      label: "Category",
+      label: "Documentation URL",
       order: 10,
     },
   };

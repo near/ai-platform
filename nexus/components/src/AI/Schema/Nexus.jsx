@@ -20,7 +20,7 @@ const schema = {
   datasets: {
     title: "Datasets",
     icon: "ph ph-list-checks",
-    defaultValue: "alignmentDataset",
+    defaultValue: "trainingDataset",
     items: [
       {
         name: "Crowdsourcing",
@@ -60,6 +60,7 @@ const schema = {
             src="${REPL_ACCOUNT}/widget/Entities.Template.GenericEntityConfig"
             props={{
               entityType: "trainingDataset",
+              schemaFile: "${REPL_ACCOUNT}/widget/AI.Schema.TrainingDataset",
               ...contentProps,
             }}
           />
@@ -81,7 +82,7 @@ const schema = {
             src="${REPL_ACCOUNT}/widget/Entities.Template.GenericEntityConfig"
             props={{
               entityType: "modelProvider",
-              schemaFile: "${REPL_ACCOUNT}/widget/AI.Schema.Provider",
+              schemaFile: "${REPL_ACCOUNT}/widget/AI.Schema.ModelProvider",
               ...contentProps,
             }}
           />
@@ -152,7 +153,7 @@ const schema = {
             }}
           />
         ),
-        icon: "ph ph-factory", // ph-blueprint after upgrade to 2.1.0
+        icon: "ph ph-blueprint",
       },
       {
         name: "Modules",
@@ -218,7 +219,7 @@ const schema = {
             }}
           />
         ),
-        icon: "ph ph-computer-tower", // ph-network after 2.1.0 upgrade
+        icon: "ph ph-network",
       },
     ],
   },
@@ -290,7 +291,7 @@ const schema = {
             }}
           />
         ),
-        icon: "ph ph-seal-question", // ph-seal-percent after 2.1.0 upgrade
+        icon: "ph ph-seal-percent",
       },
       {
         name: "Agent Reputation",
@@ -304,7 +305,7 @@ const schema = {
             }}
           />
         ),
-        icon: "ph ph-crown-simple", //  ph-ranking after 2.1.0 upgrade
+        icon: "ph ph-ranking",
       },
       {
         name: "Compliance Proofs",
