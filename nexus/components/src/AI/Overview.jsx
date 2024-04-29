@@ -513,14 +513,14 @@ return (
           </Card>
           <Card
             title="Find Resources"
-            text="From archived Datasets to full Model weights."
+            text="Training Datasets, full Model Weights, Tools, and more."
           >
             <Flex $direction="column" $gap="16px" $mobileGap="48px">
               <ButtonLink
                 value="datasets"
                 icon="ph-bold ph-file-text"
                 title="Datasets"
-                text="Stored in IPFS."
+                text="Share or use Training Datasets."
               />
               <ButtonLink
                 value="models"
@@ -544,6 +544,20 @@ return (
             NEAR ecosystem then compose them into new combinations. Sign in to
             add or fork any of the existing resource types. It's easy to upload
             Datasets, Models, Agent Frameworks, and more.
+          </p>
+          <p>
+            Join the conversation with other{" "}
+            <Link to={"https://www.nearbuilders.com/tg-ai"}>nearbuilders</Link>
+          </p>
+          <p>
+            For example, if you are building an open source NEAR Co-pilot you
+            might share many of the pieces for others to compose with. That
+            could be training datasets of Contract or Component code. You might
+            share a trained model by uploading the weights; then separate out
+            the framework code and finally add the Co-pilot to the agent
+            directory for use by end users. Another developer might then use
+            those pieces to create a code security checking agent that
+            interoperates with your coding Co-pilot.
           </p>
           <p>
             If you need more, this UI is composed of React-on-Chain components

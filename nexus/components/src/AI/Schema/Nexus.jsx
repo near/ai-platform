@@ -97,7 +97,7 @@ const schema = {
             src="${REPL_ACCOUNT}/widget/Entities.Template.GenericEntityConfig"
             props={{
               entityType: "modelName",
-              title: "Standard Model Names",
+              title: "Standard Model Name",
               schemaFile: "${REPL_ACCOUNT}/widget/AI.Schema.ModelName",
               ...contentProps,
             }}
@@ -113,7 +113,8 @@ const schema = {
             src="${REPL_ACCOUNT}/widget/Entities.Template.GenericEntityConfig"
             props={{
               entityType: "model",
-              title: "Model Weights",
+              title: "Model Weight",
+              schemaFile: "${REPL_ACCOUNT}/widget/AI.Schema.Model",
               ...contentProps,
             }}
           />
@@ -149,6 +150,7 @@ const schema = {
             src="${REPL_ACCOUNT}/widget/Entities.Template.GenericEntityConfig"
             props={{
               entityType: "agentFramework",
+              schemaFile: "${REPL_ACCOUNT}/widget/AI.Schema.AgentFramework",
               ...contentProps,
             }}
           />
