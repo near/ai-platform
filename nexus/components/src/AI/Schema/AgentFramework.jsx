@@ -4,8 +4,8 @@ const { genSchema: genericGenSchema } = VM.require(
 
 const genSchema = (ignored) => {
   const namespace = "near";
-  const entityType = "trainingDataset";
-  const entityTitle = "Training Dataset";
+  const entityType = "agentFramework";
+  const entityTitle = "Agent Framework";
 
   const genericSchema = genericGenSchema(namespace, entityType, entityTitle);
   return {

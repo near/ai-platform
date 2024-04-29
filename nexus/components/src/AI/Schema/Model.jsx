@@ -3,28 +3,17 @@ const { genSchema: genericGenSchema } = VM.require(
 );
 
 const genSchema = (namespace, entityType, title) => {
-  const entityTitle = "Training Dataset";
+  const entityTitle = title ?? "Model Weight";
 
   const genericSchema = genericGenSchema(namespace, entityType, entityTitle);
   return {
     ...genericSchema,
-    languages: {
-      type: "string",
-      inputProps: {
-        min: 0,
-        max: 1024,
-        placeholder: `Languages in the dataset.`,
-        required: false,
-      },
-      label: "Languages",
-      order: 10,
-    },
     file: {
       type: "file",
       inputProps: {
         min: 4,
         max: 255,
-        placeholder: `Upload the dataset file`,
+        placeholder: `Upload a model weights file`,
         required: false,
       },
       label: "File",
