@@ -429,7 +429,7 @@ const TrendingApp = ({ href, url, name, loading }) => (
   </ButtonLinkWrapper>
 );
 return (
-  <Wrapper>
+  <Wrapper className="gateway-page-container">
     <Section>
       <Container>
         <Pattern
