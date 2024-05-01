@@ -1,5 +1,5 @@
 const Wrapper = styled.div`
-  --section-gap: 20px;
+  --section-gap: 2rem;
   --text-hero: 500 56px/1 "FK Grotesk", "Mona Sans", sans-serif;
   gap: var(--section-gap);
   display: flex;
@@ -13,12 +13,6 @@ const Text = styled.p`
   color: var(--${(p) => p.$color ?? "sand12"});
   margin: 0;
   letter-spacing: ${(p) => p.$letterSpacing};
-
-  display: -webkit-box;
-  overflow: hidden;
-  -webkit-line-clamp: ${(p) => p.$overflowLines ?? "2"};
-  -webkit-box-orient: vertical;
-  text-overflow: ellipsis;
   word-break: break-word;
 
   @media (max-width: 900px) {
@@ -161,7 +155,6 @@ const ButtonMenuWrapper = styled.button`
 
 const ButtonLinkWrapper = styled("Link")`
   all: unset;
-
   display: flex;
   gap: ${(p) => p.$gap};
   align-items: ${(p) => p.$alignItems};
@@ -317,7 +310,7 @@ query ListQuery($offset: Int, $limit: Int) {
 };
 const queryName = "ListQuery";
 const loadItemsQueryApi = VM.require(
-  "${REPL_ACCOUNT}/widget/Entities.QueryApi.Client",
+  "${REPL_ACCOUNT}/widget/Entities.QueryApi.Client"
 )?.loadItems;
 if (!loadItemsQueryApi) {
   return <p>Loading modules...</p>;
@@ -447,9 +440,9 @@ return (
             $padding="55px 24px 55px 48px"
             $mobilePadding="48px 20px"
           >
-            <Grid $gap="24px" $columns="1fr 1fr">
+            <Grid $gap="24px" $mobileGap="48px" $columns="1fr 1fr">
               <Flex $direction="column" $gap="32px">
-                <div style={{ width: "250px" }}>
+                <div style={{ width: "250px", marginLeft: "-1.9rem" }}>
                   <Widget
                     src="${REPL_ACCOUNT}/widget/AI.HeaderText"
                     props={{ text: "NEAR AI", color: "#01080c" }}
@@ -463,7 +456,7 @@ return (
                   Take control - Use or contribute to Open Source AI.
                 </Text>
               </Flex>
-              <Flex $direction="column" $gap="16px" $mobileGap="48px">
+              <Flex $direction="column" $gap="0" $mobileGap="48px">
                 <ButtonLink
                   value="agents"
                   icon="ph-bold ph-binoculars"
@@ -490,19 +483,14 @@ return (
             title="Trending Agents"
             text={<>Explore agents built by the NEAR community.</>}
           >
-            <Grid
-              $gap="20px"
-              $rowGap="24px"
-              $columns="1fr 1fr"
-              $mobileColumns="1fr 1fr"
-            >
+            <Grid $gap="20px" $rowGap="24px" $columns="1fr 1fr">
               {topRatingApps.map((app) => (
                 <TrendingApp
                   key={app.name}
                   href={buildAgentUrl(
                     app.attributes.component,
                     app.account_id,
-                    app.name,
+                    app.name
                   )}
                   url={app.logo_url}
                   name={app.display_name}
