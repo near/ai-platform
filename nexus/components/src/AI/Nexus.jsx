@@ -1,15 +1,22 @@
 const Wrapper = styled.div`
-  display: grid;
-  gap: 40px;
-  grid-template-columns: 244px 1.5fr;
-  align-items: start;
-  height: 100%;
-
-  @media (max-width: 750px) {
-    display: flex;
-    flex-direction: column;
-  }
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  grid-template-columns: 200px 1fr;
+  width: 100%;
+  max-width: 960px;
+  margin: 0 auto;
 `;
+
+const Section = styled.div`
+  width: 100%;
+`;
+
+const Title = styled.h2`
+  font: var(--text-l);
+  font-weight: 600;
+`;
+
 const { schema } = VM.require(`${REPL_ACCOUNT}/widget/AI.Schema.Nexus`);
 if (!schema) {
   return <></>;
@@ -36,7 +43,7 @@ const [activeTabs, setActiveTabs] = useState(
     agentTools: "contractTool",
     dataSources: "dataSource",
     verifications: "dataReputation",
-  },
+  }
 );
 
 useEffect(() => {
@@ -74,14 +81,14 @@ const content = {
       setGlobalTagFilter: (value) => setGlobalTagFilter(value),
     };
     return (
-      <div>
-        <h4 style={{ textAlign: "left" }}>{group.title}</h4>
+      <Section>
+        <Title>{group.title}</Title>
 
         <Widget
           src="${REPL_ACCOUNT}/widget/DIG.Tabs"
           props={{
             variant: "line",
-            size: "large",
+            size: "default",
             value:
               activeTabs[groupName] ||
               group.defaultValue ||
@@ -96,7 +103,7 @@ const content = {
             contentProps,
           }}
         />
-      </div>
+      </Section>
     );
   },
   dashboard: () => {
@@ -114,7 +121,7 @@ const renderContent = () => {
       return content.subGroups(
         activeGroup,
         schema[activeGroup],
-        globalTagFilter, // forces re-render, gets passed through Storage
+        globalTagFilter // forces re-render, gets passed through Storage
       );
   }
 };
@@ -163,12 +170,13 @@ const handleTagClick = (tag) => {
   });
   setActiveGroup(category);
 };
+
 return (
   <div className="gateway-page-container">
     <div className="d-flex flex-column gap-5">
       <Wrapper>
         <Widget
-          src={`${REPL_ACCOUNT}/widget/Moderation.Sidebar`}
+          src={`${REPL_ACCOUNT}/widget/AI.Navigation`}
           props={{
             title: "NEAR AI",
             activeTab: activeGroup,
@@ -185,6 +193,7 @@ return (
             ),
           }}
         />
+
         {renderContent()}
       </Wrapper>
     </div>
