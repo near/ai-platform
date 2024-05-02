@@ -8,62 +8,48 @@ const { namespace, entityType, schemaFile, returnTo } = props;
 
 const Card = styled.div`
   cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
   background-color: white;
   border-radius: 0.5rem;
   padding: 1.5rem;
-  gap: 1rem;
   height: 100%;
-  min-height: 12rem;
 
   transition: all 300ms;
-  box-shadow:
-    0 1px 3px 0 rgb(0 0 0 / 0.1),
-    0 1px 2px -1px rgb(0 0 0 / 0.1);
+  box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
 
   &:hover {
-    box-shadow:
-      0 4px 6px -1px rgb(0 0 0 / 0.1),
-      0 2px 4px -2px rgb(0 0 0 / 0.1);
+    box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
   }
 
-  img.logo {
-    width: 100%;
+  .logo {
+    width: 2.8rem;
     aspect-ratio: 1 / 1;
     border-radius: 50%;
     object-fit: cover;
   }
-
-  h3,
-  p {
-    margin: 0;
-  }
-
-  h3 {
-    font-size: 1.25rem;
-    font-weight: 600;
-  }
-
-  p {
-    font-size: 1rem;
-    font-weight: 400;
-  }
 `;
+
 const TagsWrapper = styled.div`
   padding: 4px;
 `;
+
 const CardText = styled.div``;
-const Prompt = styled.span`
-  color: grey;
-`;
+
 const PromptTooltip = styled.span`
   white-space: pre-line;
 `;
+
 const Actions = styled.div`
-  padding-top: 16px;
   display: flex;
   align-items: center;
   gap: 2px;
+  margin-top: auto;
+  flex-wrap: wrap;
+  justify-content: space-between;
 `;
+
 const sharedButtonStyles = `
   display: inline-flex;
   align-items: center;
@@ -91,6 +77,7 @@ const sharedButtonStyles = `
     font-size: 16px;
   }
 `;
+
 const Button = styled.button`
   ${sharedButtonStyles}
   color: ${(p) => (p.primary ? "#09342E" : "#11181C")} !important;
@@ -101,6 +88,40 @@ const Button = styled.button`
   &:focus {
     background: ${(p) => (p.primary ? "rgb(112 242 164)" : "#ECEDEE")};
   }
+`;
+
+const Text = styled.p`
+  font: var(--${(p) => p.$size ?? "text-base"});
+  font-weight: ${(p) => p.$fontWeight} !important;
+  color: var(--${(p) => p.$color ?? "sand12"});
+  margin: 0;
+  word-break: break-word;
+
+  @media (max-width: 900px) {
+    font: var(--${(p) => p.$mobileSize ?? p.$size ?? "text-base"});
+  }
+`;
+
+const LogoAndName = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+`;
+
+const Name = styled.div`
+  min-width: 0;
+
+  * {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+`;
+
+const Content = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
 `;
 
 const AgentCard = ({ item, editFunction }) => {
@@ -135,37 +156,71 @@ const AgentCard = ({ item, editFunction }) => {
   return (
     <Card>
       <Link to={actionLink} style={{ all: "unset" }}>
-        <div className="row">
-          <div className="col-4">
-            <img className="logo" src={imageUrl} alt="agent logo" />
-            {tags && tags.length > 0 && (
-              <TagsWrapper>
+        <LogoAndName>
+          {imageUrl && <img className="logo" src={imageUrl} alt="agent logo" />}
+
+          <Name>
+            <Text $fontWeight="600">{displayName}</Text>
+
+            <Text $size="text-s" $color="sand10">
+              by {accountId}
+            </Text>
+          </Name>
+        </LogoAndName>
+      </Link>
+
+      <Text>{prompt ? prompt.substring(0, 50) : ""}...</Text>
+
+      {tags && tags.length > 0 && (
+        <TagsWrapper>
+          <Widget
+            src="${REPL_ACCOUNT}/widget/Tags"
+            props={{
+              tags,
+            }}
+          />
+        </TagsWrapper>
+      )}
+
+      <Actions>
+        <Widget
+          src="${REPL_ACCOUNT}/widget/DIG.Tooltip"
+          props={{
+            content: "View Details",
+            trigger: (
+              <Link to={detailsLink} style={{ all: "unset" }}>
                 <Widget
-                  src="${REPL_ACCOUNT}/widget/Tags"
+                  src="${REPL_ACCOUNT}/widget/DIG.Button"
                   props={{
-                    tags,
+                    icon: "ph-bold ph-eye",
+                    variant: "secondary",
+                    fill: "ghost",
+                    size: "small",
                   }}
                 />
-              </TagsWrapper>
-            )}
-          </div>
-
-          <CardText className="col">
-            <h3>{displayName}</h3>
-            <p>by {accountId}</p>
-            <Widget
-              src="${REPL_ACCOUNT}/widget/DIG.Tooltip"
-              props={{
-                content: <PromptTooltip>{prompt}</PromptTooltip>,
-                trigger: (
-                  <Prompt>{prompt ? prompt.substring(0, 50) : ""}...</Prompt>
-                ),
-              }}
-            />
-          </CardText>
-        </div>
-      </Link>
-      <Actions>
+              </Link>
+            ),
+          }}
+        />
+        <Widget
+          src="${REPL_ACCOUNT}/widget/DIG.Tooltip"
+          props={{
+            content: "Use agent",
+            trigger: (
+              <Link to={actionLink} style={{ all: "unset" }}>
+                <Widget
+                  src="${REPL_ACCOUNT}/widget/DIG.Button"
+                  props={{
+                    icon: "ph-bold ph-chat-teardrop-text",
+                    variant: "secondary",
+                    fill: "ghost",
+                    size: "small",
+                  }}
+                />
+              </Link>
+            ),
+          }}
+        />
         <Widget
           src="${REPL_ACCOUNT}/widget/DIG.Tooltip"
           props={{
@@ -175,7 +230,7 @@ const AgentCard = ({ item, editFunction }) => {
                 src="${REPL_ACCOUNT}/widget/DIG.Button"
                 props={{
                   onClick: () => editFunction(item),
-                  iconLeft: editIcon,
+                  icon: editIcon,
                   variant: "secondary",
                   fill: "ghost",
                   size: "small",
@@ -224,44 +279,6 @@ const AgentCard = ({ item, editFunction }) => {
           props={{
             postType: "AI Agent",
             url: actionUrl,
-          }}
-        />
-        <Widget
-          src="${REPL_ACCOUNT}/widget/DIG.Tooltip"
-          props={{
-            content: "View Details",
-            trigger: (
-              <Link to={detailsLink} style={{ all: "unset" }}>
-                <Widget
-                  src="${REPL_ACCOUNT}/widget/DIG.Button"
-                  props={{
-                    iconLeft: "ph-bold ph-eye",
-                    variant: "secondary",
-                    fill: "ghost",
-                    size: "small",
-                  }}
-                />
-              </Link>
-            ),
-          }}
-        />
-        <Widget
-          src="${REPL_ACCOUNT}/widget/DIG.Tooltip"
-          props={{
-            content: "Use agent",
-            trigger: (
-              <Link to={actionLink} style={{ all: "unset" }}>
-                <Widget
-                  src="${REPL_ACCOUNT}/widget/DIG.Button"
-                  props={{
-                    iconLeft: "ph-bold ph-chat-teardrop-text",
-                    variant: "secondary",
-                    fill: "ghost",
-                    size: "small",
-                  }}
-                />
-              </Link>
-            ),
           }}
         />
       </Actions>
