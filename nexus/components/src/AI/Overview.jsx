@@ -178,8 +178,7 @@ const ButtonLinkWrapper = styled("Link")`
     }
 
     .trending-round-icon {
-      filter: drop-shadow(0px 4px 8px rgba(0, 0, 0, 0.06))
-        drop-shadow(0px 0px 0px rgba(0, 0, 0, 0.06));
+      filter: drop-shadow(0px 4px 8px var(--violet6)) drop-shadow(0px 0px 0px var(--violet6));
     }
   }
 
@@ -194,8 +193,7 @@ const ButtonLinkWrapper = styled("Link")`
     }
 
     .trending-round-icon {
-      filter: drop-shadow(0px 4px 8px var(--violet6))
-        drop-shadow(0px 0px 0px var(--violet6));
+      filter: drop-shadow(0px 4px 8px var(--violet6)) drop-shadow(0px 0px 0px var(--violet6));
     }
   }
 `;
@@ -306,7 +304,7 @@ query ListQuery($offset: Int, $limit: Int) {
 };
 const queryName = "ListQuery";
 const loadItemsQueryApi = VM.require(
-  "${REPL_ACCOUNT}/widget/Entities.QueryApi.Client"
+  "${REPL_ACCOUNT}/widget/Entities.QueryApi.Client",
 )?.loadItems;
 if (!loadItemsQueryApi) {
   return <p>Loading modules...</p>;
@@ -405,13 +403,12 @@ const TrendingApp = ({ href, url, name, loading }) => (
   >
     <RoundIcon
       url={url}
-      $noHover
       $size="60px"
       $padding="5px"
       $borderRadius="50%"
       $background="var(--white)"
-      $filter="drop-shadow(0px 4px 8px rgba(0, 0, 0, 0.06)) drop-shadow(0px 0px 0px rgba(0, 0, 0, 0.06))"
       $loading={loading}
+      className="trending-round-icon"
     />
     <Text
       $size="text-s"
@@ -486,7 +483,7 @@ return (
                   href={buildAgentUrl(
                     app.attributes.component,
                     app.account_id,
-                    app.name
+                    app.name,
                   )}
                   url={app.logo_url}
                   name={app.display_name}
@@ -535,13 +532,13 @@ return (
           </p>
           <p>
             For example, if you are building an open source NEAR Co-pilot you
-            might share pieces for others to compose with. That
-            could be training datasets of Contract or Component code. You might
-            share a trained model by uploading the weights; then separate out
-            the framework code and finally add the Co-pilot to the agent
-            directory for use by end users. Another developer might then use
-            those pieces to create a code security checking agent that
-            interoperates with your coding Co-pilot.
+            might share pieces for others to compose with. That could be
+            training datasets of Contract or Component code. You might share a
+            trained model by uploading the weights; then separate out the
+            framework code and finally add the Co-pilot to the agent directory
+            for use by end users. Another developer might then use those pieces
+            to create a code security checking agent that interoperates with
+            your coding Co-pilot.
           </p>
           <p>
             If you need more, this UI is composed of React-on-Chain components

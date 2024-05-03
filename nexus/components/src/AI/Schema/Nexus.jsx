@@ -22,22 +22,22 @@ const schema = {
     icon: "ph ph-list-checks",
     defaultValue: "trainingDataset",
     items: [
-        {
-            name: "Training Datasets",
-            value: "trainingDataset",
-            content: (contentProps) => (
-                <Widget
-                    src="${REPL_ACCOUNT}/widget/Entities.Template.GenericEntityConfig"
-                    props={{
-                        entityType: "trainingDataset",
-                        schemaFile: "${REPL_ACCOUNT}/widget/AI.Schema.TrainingDataset",
-                        ...contentProps,
-                    }}
-                />
-            ),
-            icon: "ph ph-chart-bar-horizontal",
-        },
-        {
+      {
+        name: "Training Datasets",
+        value: "trainingDataset",
+        content: (contentProps) => (
+          <Widget
+            src="${REPL_ACCOUNT}/widget/Entities.Template.GenericEntityConfig"
+            props={{
+              entityType: "trainingDataset",
+              schemaFile: "${REPL_ACCOUNT}/widget/AI.Schema.TrainingDataset",
+              ...contentProps,
+            }}
+          />
+        ),
+        icon: "ph ph-chart-bar-horizontal",
+      },
+      {
         name: "Crowdsourcing",
         value: "crowdsourcedDataset",
         content: (contentProps) => (

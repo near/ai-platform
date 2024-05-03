@@ -1,6 +1,7 @@
 const { href } = VM.require("${REPL_DEVHUB}/widget/core.lib.url");
+const { ipfsUrl } = VM.require("${REPL_ACCOUNT}/widget/Entities.QueryApi.Ipfs");
 
-if (!href) {
+if (!href || !ipfsUrl) {
   return <></>;
 }
 
@@ -17,10 +18,14 @@ const Card = styled.div`
   height: 100%;
 
   transition: all 300ms;
-  box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
+  box-shadow:
+    0 1px 3px 0 rgb(0 0 0 / 0.1),
+    0 1px 2px -1px rgb(0 0 0 / 0.1);
 
   &:hover {
-    box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+    box-shadow:
+      0 4px 6px -1px rgb(0 0 0 / 0.1),
+      0 2px 4px -2px rgb(0 0 0 / 0.1);
   }
 
   .logo {
@@ -130,7 +135,9 @@ const AgentCard = ({ item, editFunction }) => {
     ? item.component
     : `${REPL_ACCOUNT}/widget/AI.Agent.AgentChat`;
   const imageUrl = logoUrl
-    ? logoUrl
+    ? typeof logoUrl == "string" && logoUrl.startsWith("http")
+      ? logoUrl
+      : ipfsUrl(logoUrl)
     : "https://ipfs.near.social/ipfs/bafkreibysr2mkwhb4j36h2t7mqwhynqdy4vzjfygfkfg65kuspd2bawauu";
   const actionLink = href({
     widgetSrc: agentComponent,
