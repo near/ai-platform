@@ -456,14 +456,14 @@ return (
                 <ButtonLink
                   value="agents"
                   icon="ph-bold ph-binoculars"
-                  title="Find an Agent"
-                  text="Put AI Agents to work for you"
+                  title="AI Agents"
+                  text="Find or Build an Agent to work for you."
                 />
                 <ButtonLink
-                  value="agents"
+                  value="datasets"
                   icon="ph-bold ph-git-fork"
-                  title="Build an Agent"
-                  text="Create an Agent or other community resources."
+                  title="Training Data"
+                  text="Datasets to train on or share your own."
                 />
               </Flex>
             </Grid>
@@ -535,7 +535,7 @@ return (
           </p>
           <p>
             For example, if you are building an open source NEAR Co-pilot you
-            might share many of the pieces for others to compose with. That
+            might share pieces for others to compose with. That
             could be training datasets of Contract or Component code. You might
             share a trained model by uploading the weights; then separate out
             the framework code and finally add the Co-pilot to the agent
@@ -551,7 +551,7 @@ return (
           </p>
           <TrendingApp
             href="https://github.com/near/ai-platform/tree/develop/nexus/components/src/AI/Schema"
-            url="https://near.org/_next/static/media/near-icon.2e682d59.svg"
+            url="https://github.githubassets.com/assets/GitHub-Mark-ea2971cee799.png"
             name="ai-platform"
             loading={false}
           />
@@ -562,7 +562,7 @@ return (
           </p>
           <TrendingApp
             href="https://github.com/near/near-discovery-components/tree/develop/src/Entities/Examples"
-            url="https://near.org/_next/static/media/near-icon.2e682d59.svg"
+            url="https://github.githubassets.com/assets/GitHub-Mark-ea2971cee799.png"
             name="entity-components"
             loading={false}
           />
