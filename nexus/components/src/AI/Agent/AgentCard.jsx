@@ -1,6 +1,7 @@
 const { href } = VM.require("${REPL_DEVHUB}/widget/core.lib.url");
+const { ipfsUrl } = VM.require("${REPL_ACCOUNT}/widget/Entities.QueryApi.Ipfs");
 
-if (!href) {
+if (!href || !ipfsUrl) {
   return <></>;
 }
 
@@ -129,9 +130,11 @@ const AgentCard = ({ item, editFunction }) => {
   const agentComponent = item.component
     ? item.component
     : `${REPL_ACCOUNT}/widget/AI.Agent.AgentChat`;
-  const imageUrl = logoUrl
-    ? logoUrl
-    : "https://ipfs.near.social/ipfs/bafkreibysr2mkwhb4j36h2t7mqwhynqdy4vzjfygfkfg65kuspd2bawauu";
+    const imageUrl = logoUrl
+        ? typeof logoUrl == "string" && logoUrl.startsWith("http")
+            ? logoUrl
+            : ipfsUrl(logoUrl)
+        : "https://ipfs.near.social/ipfs/bafkreibysr2mkwhb4j36h2t7mqwhynqdy4vzjfygfkfg65kuspd2bawauu";
   const actionLink = href({
     widgetSrc: agentComponent,
     params: { src: `${accountId}/agent/${name}` },
