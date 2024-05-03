@@ -178,7 +178,7 @@ return (
         <Widget
           src={`${REPL_ACCOUNT}/widget/AI.Navigation`}
           props={{
-            title: "NEAR AI",
+            title: "Ecosystem AI Directory",
             activeTab: activeGroup,
             items: sidebarItems(schema),
             additionalContent: (
