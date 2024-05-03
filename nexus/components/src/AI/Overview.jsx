@@ -306,7 +306,7 @@ query ListQuery($offset: Int, $limit: Int) {
 };
 const queryName = "ListQuery";
 const loadItemsQueryApi = VM.require(
-  "${REPL_ACCOUNT}/widget/Entities.QueryApi.Client"
+  "${REPL_ACCOUNT}/widget/Entities.QueryApi.Client",
 )?.loadItems;
 if (!loadItemsQueryApi) {
   return <p>Loading modules...</p>;
@@ -486,7 +486,7 @@ return (
                   href={buildAgentUrl(
                     app.attributes.component,
                     app.account_id,
-                    app.name
+                    app.name,
                   )}
                   url={app.logo_url}
                   name={app.display_name}
@@ -535,13 +535,13 @@ return (
           </p>
           <p>
             For example, if you are building an open source NEAR Co-pilot you
-            might share pieces for others to compose with. That
-            could be training datasets of Contract or Component code. You might
-            share a trained model by uploading the weights; then separate out
-            the framework code and finally add the Co-pilot to the agent
-            directory for use by end users. Another developer might then use
-            those pieces to create a code security checking agent that
-            interoperates with your coding Co-pilot.
+            might share pieces for others to compose with. That could be
+            training datasets of Contract or Component code. You might share a
+            trained model by uploading the weights; then separate out the
+            framework code and finally add the Co-pilot to the agent directory
+            for use by end users. Another developer might then use those pieces
+            to create a code security checking agent that interoperates with
+            your coding Co-pilot.
           </p>
           <p>
             If you need more, this UI is composed of React-on-Chain components

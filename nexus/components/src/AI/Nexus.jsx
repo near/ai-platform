@@ -43,7 +43,7 @@ const [activeTabs, setActiveTabs] = useState(
     agentTools: "contractTool",
     dataSources: "dataSource",
     verifications: "dataReputation",
-  }
+  },
 );
 
 useEffect(() => {
@@ -121,7 +121,7 @@ const renderContent = () => {
       return content.subGroups(
         activeGroup,
         schema[activeGroup],
-        globalTagFilter // forces re-render, gets passed through Storage
+        globalTagFilter,
       );
   }
 };
