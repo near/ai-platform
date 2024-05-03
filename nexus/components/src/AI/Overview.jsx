@@ -178,8 +178,7 @@ const ButtonLinkWrapper = styled("Link")`
     }
 
     .trending-round-icon {
-      filter: drop-shadow(0px 4px 8px rgba(0, 0, 0, 0.06))
-        drop-shadow(0px 0px 0px rgba(0, 0, 0, 0.06));
+      filter: drop-shadow(0px 4px 8px var(--violet6)) drop-shadow(0px 0px 0px var(--violet6));
     }
   }
 
@@ -194,8 +193,7 @@ const ButtonLinkWrapper = styled("Link")`
     }
 
     .trending-round-icon {
-      filter: drop-shadow(0px 4px 8px var(--violet6))
-        drop-shadow(0px 0px 0px var(--violet6));
+      filter: drop-shadow(0px 4px 8px var(--violet6)) drop-shadow(0px 0px 0px var(--violet6));
     }
   }
 `;
@@ -405,13 +403,12 @@ const TrendingApp = ({ href, url, name, loading }) => (
   >
     <RoundIcon
       url={url}
-      $noHover
       $size="60px"
       $padding="5px"
       $borderRadius="50%"
       $background="var(--white)"
-      $filter="drop-shadow(0px 4px 8px rgba(0, 0, 0, 0.06)) drop-shadow(0px 0px 0px rgba(0, 0, 0, 0.06))"
       $loading={loading}
+      className="trending-round-icon"
     />
     <Text
       $size="text-s"
