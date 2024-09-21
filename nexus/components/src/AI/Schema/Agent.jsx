@@ -32,6 +32,18 @@ const genSchema = (namespace, entityType, title) => {
       label: "Component",
       order: 11,
     },
+    dockerfile: {
+      type: "file",
+      inputProps: {
+        min: 0,
+        max: 1024,
+        placeholder: "The Dockerfile for the agent.",
+        required: false,
+      },
+      label: "Dockerfile",
+      order: 12,
+    },
+
     // preferredProvider: {
     //     inputProps: {
     //         min: 2,
